@@ -1,16 +1,21 @@
 <template>
   <div class="py-5 px-5 items-center justify-end">
-    <div class="flex font-montserrat">
-      <h1 class="font-bold">Testing version 1</h1>
-      <button
-        class="flex font-montserrat bg-[#554AF0] text-white font-semibold py-2 px-5 rounded"
-      >
-        <img src="../assets/Run.svg" />
-        Run
-      </button>
+    <div class="flex  font-montserrat justify-between">
+      
+        <h1 class="font-bold text-[32px] leading-10">Testing version 1</h1>
+      
+      <div class="ml-auto">
+        <button
+          class="flex float-right  font-montserrat bg-[#554AF0] text-white font-semibold py-2 px-5 rounded"
+        >
+          <img src="../assets/Run.svg" />
+          Run
+        </button>
+      
+      </div>
     </div>
-    <p>6 Request</p>
-    <div class="flex">
+    <p class="py-4">6 Request</p>
+    <div class="flex py-4">
         <button
         class="font-montserrat bg-[#22B814] text-white font-semibold px-5 rounded"
       >
@@ -22,7 +27,7 @@
       </div>
     </div>
 
-    <div class="flex">
+    <div class="flex py-4">
         <button
         class="font-montserrat bg-[#CC0000] text-white font-semibold py-0 px-5 rounded"
       >
@@ -34,7 +39,7 @@
       </div>
     </div>
 
-    <div class="flex">
+    <div class="flex py-4">
         <button
         class="font-montserrat bg-[#22B814] text-white font-semibold px-5 rounded"
       >
@@ -46,7 +51,7 @@
       </div>
     </div>
 
-    <div class="flex">
+    <div class="flex py-4">
         <button
         class="font-montserrat bg-[#FF9933] text-white font-semibold px-5 rounded"
       >
@@ -58,7 +63,7 @@
       </div>
     </div>
 
-    <div class="flex">
+    <div class="flex py-4">
         <button
         class="font-montserrat bg-[#4DAEFF] text-white font-semibold px-5 rounded"
       >

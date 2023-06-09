@@ -1,8 +1,8 @@
 <template>
   <div  class="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-[#33333385]" @click="showLogout">
     <div class="bg-white p-8 rounded-lg shadow-lg">
-      <div  class="sm:pr-[300px]" @click="closeModal">
-        <img  class="cursor-pointer pr-4" src="../.././assets/CloseCircle.svg" alt="image">
+      <div  class="float-right" @click="closeModal">
+        <img  class="cursor-pointer " src="../.././assets/CloseCircle.svg" alt="image">
       </div>
       <div class="pt-6 pl-11 pr-7">
         <img src="../../assets/Logout logo.svg" alt="image">
