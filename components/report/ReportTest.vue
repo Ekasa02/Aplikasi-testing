@@ -1,26 +1,50 @@
 <template>
-  <div>
-    <div class="">
-      <div class="bg-[#FFFFFF] rounded px-5">
-        <div class="flex items-center gap-2 py-3">
-          <div>
-            <img src="../assets/version.svg" />
-          </div>
-          <div>
-            <p>Logibug</p>
-            <h1 class="font-bold">Testing version 1</h1>
-          </div>
-        </div>
+  <div class="justify-between items-center">
+    <h1 class="font-bold py-8 leading-10 text-[32px]">Report</h1>
+    <nuxtLink to="/reportbar" class="flex gap-2 font-montserrat py-4 items-center justify-center">
+      <img src="../assets/mobile.svg" />
+      <h1 class="font-bold">Logibug</h1>
+      <p
+        class="text-gray-700 rounded-lg border-gray-300 border-2 border-solid px-2"
+      >
+        Manual
+      </p>
+      <div class="ml-auto">
+        <img src="../assets/clickKanan.svg" class="float-right" />
       </div>
-      <div class="bg-white px-5 py-5 rounded">
-        <div class="w-full bg-[#CDCBFC] rounded-lg">
-          <div class="h-4 bg-[#554AF0] rounded-lg" style="width: 50%"></div>
-        </div>
-        <p class="pt-3">Test case</p>
-        <p>Pass</p>
-        <p>Fail</p>
+    </nuxtLink>
+    <hr class="pb-3 border-gray-200" />
+    <nuxtLink to="/reportbar" class="flex gap-2 font-montserrat py-4 items-center justify-center">
+      <img src="../assets/website.svg" />
+      <h1 class="font-bold">Logibug</h1>
+      <p
+        class="text-gray-700 rounded-lg border-gray-300 border-2 border-solid px-2"
+      >
+        Manual
+      </p>
+      <div class="ml-auto">
+        <img src="../assets/clickKanan.svg" class="float-right" />
       </div>
+    </nuxtLink>
+    <hr class="pb-3 border-gray-200" />
+    <nuxtLink to="/reportbar" class="flex gap-2 font-montserrat items-center py-4 justify-center">
+        <img src="../assets/API.svg" />
+        <h1 class="font-bold">Logibug</h1>
+        <p
+          class="text-gray-700 rounded-lg border-gray-300 border-2 border-solid px-2"
+        >
+          API
+        </p>
+        <div class="ml-auto">
+          <img src="../assets/clickKanan.svg" class="float-right" />
+        </div>
+      </nuxtLink>
+      <hr class="pb-3 border-gray-200" />
     </div>
-  </div>
 </template>
-<script></script>
+
+<script>
+export default {}
+</script>
+
+<style></style>
