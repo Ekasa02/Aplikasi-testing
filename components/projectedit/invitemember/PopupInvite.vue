@@ -50,15 +50,11 @@
               <div class="font-montserrat pb-14">
                 <h1 class="pt-8 font-semibold text-[16px] leading-6">Member</h1>
 
-                <p class="float-right text-[#554AF0]" @click="infoMember">
-                  See all
-                </p>
-
-                <PopupMember
-                  v-if="isPopupMember"
-                  :id="id"
-                  @closeMember="closeMember"
-                />
+                <button class="float-right text-[#554AF0]" @click="infoMember">
+                 
+                    See all
+                 
+                </button>
                 <!-- <p class="font-medium text-[#808080] leading-5">None</p> -->
                 <img
                   :src="items.img_url"
@@ -68,6 +64,11 @@
               </div>
             </div>
           </form>
+          <PopupMember
+          v-if="isMembervisible"
+          :id="id"
+          @closeMember="closeMember"
+        />
         </div>
       </div>
     </div>
@@ -75,8 +76,8 @@
 </template>
 
 <script>
-import PopupMember from '../invitemember/member/PopupMember.vue'
-import HeaderMember from './HeaderMember.vue'
+import PopupMember from './member/PopupMember.vue';
+import HeaderMember from './HeaderMember.vue';
 
 export default {
   components: {
@@ -91,7 +92,7 @@ export default {
   },
   data() {
     return {
-      isPopupMember: false,
+      isMembervisible: false,
       items: {
         email: '',
         role: '',
@@ -101,13 +102,13 @@ export default {
 
   methods: {
     infoMember() {
-      this.isPopupMember = true
+      this.isMembervisible = true;
     },
     closeMem() {
       this.$emit('closeInvite')
     },
     closeMember() {
-      this.isPopupMember = false
+      this.isMembervisible = false
     },
 
     async postMember() {

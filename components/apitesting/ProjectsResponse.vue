@@ -74,6 +74,6 @@
 
 <script>
 export default {
-  layouts: 'SidebarLayout',
+  layout: 'SidebarLayout',
 }
 </script>

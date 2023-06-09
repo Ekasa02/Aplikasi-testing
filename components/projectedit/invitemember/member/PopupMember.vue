@@ -55,7 +55,7 @@ export default {
   methods: {
     
     closeMember() {
-      this.$emit("closeMember")
+      this.$emit('closeMember')
     },
     async getMember() {
       try {
