@@ -7,7 +7,7 @@
                     <div class="flex">
                         <h1 class="font-semibold text-xl">{{ item.name }}</h1>
                     </div>
-                    <div class="flex gap-3 items-center">
+                    <div class="flex gap-3 items-center" v-if="role !== 'dev'">
                         <button @click="deletePopup(item.id); $event.stopPropagation()">
                             <img src="./svg/Delete.svg" alt="List Icon" class="h-5 w-5">
                         </button>
@@ -35,6 +35,10 @@ export default {
             type: Array,
             default: () => [],
         },
+        role: {
+            type: String,
+            required: true
+        }
     },
     data() {
         return {
@@ -73,7 +77,7 @@ export default {
         },
         deleteProject() {
             this.isPopupDelete = true
-        },
+        }
     },
 }
 

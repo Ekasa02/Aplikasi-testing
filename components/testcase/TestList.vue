@@ -12,7 +12,7 @@
               <div class="bg-yellow-400 px-3 py-1 rounded-xl text-white">{{ item.test_category }}</div>
             </div>
           </div>
-          <div class="flex gap-x-3 items-center ml-auto">
+          <div v-if="role !== 'dev'" class="flex gap-x-3 items-center ml-auto">
             <button @click="deleteItem(item.id); $event.stopPropagation()">
               <img src="./svg/Delete.svg" alt="Delete Icon" class="h-[20px] w-[20px]">
             </button>
@@ -40,6 +40,10 @@ export default {
       default: () => []
     },
     projectId: {
+      type: String,
+      required: true
+    },
+    role: {
       type: String,
       required: true
     },

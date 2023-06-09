@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div class="">
-                        <AddResult :test-id="itemId" />
+                        <AddResult :test-id="itemId" :role="member" />
                     </div>
                 </div>
             </div>
@@ -68,11 +68,14 @@ export default {
         return {
             id: this.$route.params.id,
             items: [],
-            itemId: ''
+            itemId: '',
+            projectId: '',
+            member: ''
         };
     },
     mounted() {
-        this.getTestcase();
+        this.getProjectid();
+        this.getMember();
     },
     methods: {
         async getTestcase() {
@@ -81,8 +84,42 @@ export default {
                 console.log(response);
                 this.items = response.data;
                 this.itemId = response.data[0].id;
+                this.projectId = response.data[0].project_id;
+                console.log(this.itemId)
             } catch (e) {
                 console.log(e);
+            }
+        },
+        async getMember() {
+            try {
+                const response = await this.$axios.$get(
+                    `/members?project_id=${this.id}`
+                )
+                await this.getProfile()
+                // console.log(response.data[2])
+                this.member = response.data.filter(member => member.email === this.user)[0].role;
+                // console.log(this.member)
+            } catch (e) {
+                console.log(e)
+            }
+        },
+        async getProjectid() {
+            try {
+                await this.getTestcase();
+                const response = await this.$axios.$get(`/test_cases/?version_id=${this.projectId}`)
+                console.log(response)
+                this.items = response.data
+            } catch (e) {
+                console.log("error")
+            }
+        },
+        async getProfile() {
+            try {
+                const response = await this.$axios.$get('/profiles')
+                // console.log(response.data.email)
+                this.user = response.data.email
+            } catch (e) {
+                console.log(e)
             }
         }
     }

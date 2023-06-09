@@ -4,7 +4,7 @@
       <div class="ml-auto">
         <h1 class="font-bold text-2xl">Result</h1>
         <p class="pt-3 text-sm text-[#6A6D71]">No results yet</p>
-        <div class="pt-2">
+        <div v-if="role !== 'dev'" class="pt-2">
           <button class="font-montserrat w-[100%] bg-[#554AF0] text-white font-bold py-2 px-4 rounded"
             @click="showCreate">
             Add result
@@ -58,6 +58,10 @@ export default {
     testId: {
       type: Number,
       required: true
+    },
+    role: {
+      type: String,
+      required: true
     }
   },
   data() {
@@ -86,7 +90,7 @@ export default {
     async getTestcase() {
       try {
         this.isLoading = true;
-        const response = await this.$axios.$get(`/results?test_case_id=23`);x
+        const response = await this.$axios.$get(`/results?test_case_id=23`);
         console.log(response);
         this.items = response.data; // Assign the array of results to the "items" data property
       } catch (e) {
