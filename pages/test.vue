@@ -15,6 +15,7 @@
         <!-- <popup-invite></popup-invite> -->
         <!-- <projects-response></projects-response> -->
         <report-test></report-test>
+        <!-- <report-bar></report-bar> -->
     </div>
 </template>
 
@@ -33,7 +34,8 @@
 // import PopupFilter from '../components/projectedit/testcase/filtertestase/PopupFilter.vue';
 // import DetailTest from '../components/detailtestcase/DetailTest.vue';
 // import ProjectsResponse from '../components/apitesting/ProjectsResponse.vue';
-import ReportTest from "../components/report/ReportTest.vue";
+// import ReportBar from "../components/report/ReportBar.vue";
+import ReportTest from '../components/report/ReportTest.vue';
 
 export default{
     components:{
@@ -52,6 +54,7 @@ export default{
         // RegisterSuccess,
         // DetailTest,
         ReportTest,
+        // ReportBar,
     }
 }
 </script>
