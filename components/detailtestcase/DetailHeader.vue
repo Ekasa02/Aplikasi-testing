@@ -1,11 +1,10 @@
 <template>
     <div>
         <div class="flex items-center justify-end py-[14px] pr-[100px] border-b-[1px] border-gray-300">
-            <div class="ml-auto">
-                <LogibugProfile @click="showPopup = true" />
-            </div>
+            <button  class="ml-auto" @click="showProfile">
+                <LogibugProfile  />
+            </button>
         </div>
-        <DashboardPopup v-if="showPopup" @close="showPopup = false" />
     </div>
 </template>
   
@@ -18,6 +17,11 @@ export default {
         return {
             showPopup: false
         }
+    },
+    methods:{
+        showProfile() {
+            this.$emit("showProfile");
+        },
     }
 }
 </script>

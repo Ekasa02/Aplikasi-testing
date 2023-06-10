@@ -7,14 +7,22 @@
       </div>
       <hr class="border-gray-300 my-4 w-full">
       <form @submit.prevent="postProject">
+<<<<<<< HEAD
+        <label class="block font-montserrat font-bold text-[14px] mb-2" for="project-name">
+=======
         <label class="block font-['Montserrat'] font-bold text-[14px] mb-2" for="project-name">
+>>>>>>> b5c9bc73c6f7952fc2ed0792b1d4786b886ad293
           Project Name
         </label>
         <input id="project-name" v-model="newItem.name"
           class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="text" placeholder="Project Name" required>
         <div class="pt-[15px] relative">
+<<<<<<< HEAD
+          <label class="block font-montserrat font-bold text-[14px] mb-2" for="platform">
+=======
           <label class="block font-['Montserrat'] font-bold text-[14px] mb-2" for="platform">
+>>>>>>> b5c9bc73c6f7952fc2ed0792b1d4786b886ad293
             Platform
           </label>
           <div class="relative">
@@ -34,7 +42,11 @@
           </div>
         </div>
         <div class="pt-[15px] relative">
+<<<<<<< HEAD
+          <label class="block font-montserrat font-bold text-[14px] mb-2" for="project-name">
+=======
           <label class="block font-['Montserrat'] font-bold text-[14px] mb-2" for="project-name">
+>>>>>>> b5c9bc73c6f7952fc2ed0792b1d4786b886ad293
             Testing Type
           </label>
           <div class="relative">
@@ -54,7 +66,11 @@
         </div>
         <div class="flex pt-[70px] justify-between sm:pt-14">
           <button type="submit"
+<<<<<<< HEAD
+            class="ml-auto mr-[15px]bg-[#FFFFFF] font-montserrat text-[#554AF0] font-bold py-2 px-4 rounded border border-[#554AF0] hover:text-white hover:bg-blue-500">
+=======
             class="ml-auto mr-[15px]bg-[#FFFFFF] font-['Montserrat'] text-[#554AF0] font-bold py-2 px-4 rounded border border-[#554AF0] hover:text-white hover:bg-blue-500">
+>>>>>>> b5c9bc73c6f7952fc2ed0792b1d4786b886ad293
             Add Item
           </button>
         </div>

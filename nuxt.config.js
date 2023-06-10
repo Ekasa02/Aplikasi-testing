@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'logibug',
+    title: 'Logibug',
     htmlAttrs: {
       lang: 'en',
     },
@@ -19,9 +19,11 @@ export default {
     '@/assets/css/main.css',
   ],
   ssr: false,
-
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+
+
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -30,6 +32,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
+
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -38,9 +41,12 @@ export default {
     '@nuxtjs/auth-next',
   ],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: 'https://logibugv5.fly.dev/api/v1'
+  },
+
+  generate: {
+    fallback: true
   },
 
   auth: {
@@ -58,6 +64,7 @@ export default {
           login: { url: '/login', method: 'post' },
           user: { url: '/profiles', method: 'get' },
           logout: false,
+
         },
         token: {
           property: 'access_token'
@@ -81,7 +88,6 @@ export default {
       },
     },
   },
-
   router: {
     middleware: ['auth']
   }

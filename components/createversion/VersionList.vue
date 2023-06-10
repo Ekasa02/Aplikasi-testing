@@ -7,7 +7,11 @@
                     <div class="flex">
                         <h1 class="font-semibold text-xl">{{ item.name }}</h1>
                     </div>
+<<<<<<< HEAD
                     <div class="flex gap-3 items-center">
+=======
+                    <div class="flex gap-3 items-center" v-if="role !== 'dev'">
+>>>>>>> b5c9bc73c6f7952fc2ed0792b1d4786b886ad293
                         <button @click="deletePopup(item.id); $event.stopPropagation()">
                             <img src="./svg/Delete.svg" alt="List Icon" class="h-5 w-5">
                         </button>
@@ -35,6 +39,13 @@ export default {
             type: Array,
             default: () => [],
         },
+<<<<<<< HEAD
+=======
+        role: {
+            type: String,
+            required: true
+        }
+>>>>>>> b5c9bc73c6f7952fc2ed0792b1d4786b886ad293
     },
     data() {
         return {
@@ -73,7 +84,11 @@ export default {
         },
         deleteProject() {
             this.isPopupDelete = true
+<<<<<<< HEAD
         },
+=======
+        }
+>>>>>>> b5c9bc73c6f7952fc2ed0792b1d4786b886ad293
     },
 }
 
