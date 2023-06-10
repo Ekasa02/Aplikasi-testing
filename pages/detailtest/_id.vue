@@ -52,16 +52,20 @@
                 </div>
             </div>
         </div>
+        <EditTest :id="itemId" />
     </div>
 </template>
   
 <script>
 import AddResult from '../../components/detailtestcase/AddResult.vue';
 import DetailHeader from '../../components/detailtestcase/DetailHeader.vue';
+import EditTest from '../../components/detailtestcase/EditTest.vue';
+
 export default {
     components: {
         AddResult,
-        DetailHeader
+        DetailHeader,
+        EditTest
     },
     layout: "SidebarLayout",
     data() {
@@ -80,7 +84,7 @@ export default {
                 const response = await this.$axios.$get(`/test_cases/?version_id=${this.id}`);
                 console.log(response);
                 this.items = response.data;
-                this.itemId = response.data[0].id;
+                this.itemId = response.data[0].id; 
             } catch (e) {
                 console.log(e);
             }
