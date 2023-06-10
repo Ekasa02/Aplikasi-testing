@@ -13,7 +13,7 @@
             </div>
           </div>
           <div v-if="role !== 'dev'" class="flex gap-x-3 items-center ml-auto">
-            <button @click="deleteItem(item.id); $event.stopPropagation()">
+            <button @click="deletePopup(item.id); $event.stopPropagation()">
               <img src="./svg/Delete.svg" alt="Delete Icon" class="h-[20px] w-[20px]">
             </button>
             <button @click="editPopup(item); $event.stopPropagation()">
@@ -24,15 +24,18 @@
       </li>
     </ul>
     <TestEdit v-if="isEditVisible" :id="id" :item="selectedItem" :project-id="projectId" @closePopup="closePopup" />
+    <TestDelete v-if="isDeleteVisible" :item-id="deleteItemId" @closeDelete="closeDelete" />
   </div>
 </template>
 
 <script>
 import TestEdit from './TestEdit.vue';
+import TestDelete from './TestDelete.vue';
 
 export default {
   components: {
-    TestEdit
+    TestEdit,
+    TestDelete
   },
   props: {
     items: {
@@ -51,8 +54,10 @@ export default {
   data() {
     return {
       isEditVisible: false,
+      isDeleteVisible: false,
       selectedItem: null,
       id: '',
+      deleteItemId: null,
       scenarioMap: {} // Map to store scenario names
     };
   },
@@ -91,6 +96,13 @@ export default {
     },
     closePopup() {
       this.isEditVisible = false;
+    },
+    deletePopup(id) {
+      this.deleteItemId = id;
+      this.isDeleteVisible = true;
+    },
+    closeDelete() {
+      this.isDeleteVisible = false;
     },
     toDetailTest(id) {
       this.$router.push(`/detailtest/${id}`);

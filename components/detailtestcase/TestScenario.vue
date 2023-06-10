@@ -49,10 +49,6 @@
 <script>
 export default {
     props: {
-        id: {
-            type: String,
-            required: true
-        },
         projectId: {
             type: String,
             required: true

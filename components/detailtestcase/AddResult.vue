@@ -40,7 +40,7 @@
         <img :src="items.img_url" alt="">
       </div>
     </div>
-    <CreateResult v-if="isCreateVisible" :id="testId" @hideCreate="hideCreate" />
+    <CreateResult v-if="isCreateVisible" :item-id="itemId" @hideCreate="hideCreate" />
     <EditResult v-if="isEditVisible" :items="items" @hideEdit="hideEdit" />
   </div>
 </template>
@@ -55,7 +55,7 @@ export default {
     EditResult
   },
   props: {
-    testId: {
+    itemId: {
       type: Number,
       required: true
     },
@@ -90,7 +90,7 @@ export default {
     async getTestcase() {
       try {
         this.isLoading = true;
-        const response = await this.$axios.$get(`/results?test_case_id=23`);
+        const response = await this.$axios.$get(`/results?test_case_id=${this.itemId}`);
         console.log(response);
         this.items = response.data; // Assign the array of results to the "items" data property
       } catch (e) {

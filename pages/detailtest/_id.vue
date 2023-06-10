@@ -6,13 +6,13 @@
                 <div class="flex gap-x-2">
                     <h1 class="text-xl font-semibold">Test Case</h1>
                     <div class="ml-auto">
-                        <button class="flex bg-[#EBEBFE] rounded items-center px-3 py-2 float-right">
+                        <button class="flex bg-[#EBEBFE] rounded items-center px-3 py-2 float-right" @click="showEdit">
                             <img src="../../components/assets/Edit.svg" />
                             <p class="ml-2">Edit</p>
                         </button>
                     </div>
                     <div class="pl-2">
-                        <button class="flex bg-[#FFE5E6] items-center px-3 py-2 rounded">
+                        <button class="flex bg-[#FFE5E6] items-center px-3 py-2 rounded" @click="showDelete">
                             <img src="../../components/assets/DeleteOutlined.svg" />
                             <p class="ml-2">Delete</p>
                         </button>
@@ -47,12 +47,13 @@
                         </div>
                     </div>
                     <div class="">
-                        <AddResult :test-id="itemId" :role="member" />
+                        <AddResult :item-id="itemId" :role="member" />
                     </div>
                 </div>
             </div>
         </div>
-        <EditTest :id="itemId" />
+        <EditTest v-if="isEditVisible" :item-id="itemId" :project-id="projectId" @closeModal="closeModal" />
+        <DeleteTest v-if="isDeleteVisible" :item-id="itemId" @closeDelete="closeDelete" />
     </div>
 </template>
   
@@ -60,12 +61,14 @@
 import AddResult from '../../components/detailtestcase/AddResult.vue';
 import DetailHeader from '../../components/detailtestcase/DetailHeader.vue';
 import EditTest from '../../components/detailtestcase/EditTest.vue';
+import DeleteTest from '../../components/detailtestcase/DeleteTest.vue';
 
 export default {
     components: {
         AddResult,
         DetailHeader,
-        EditTest
+        EditTest,
+        DeleteTest
     },
     layout: "SidebarLayout",
     data() {
@@ -74,7 +77,9 @@ export default {
             items: [],
             itemId: '',
             projectId: '',
-            member: ''
+            member: '',
+            isEditVisible: false,
+            isDeleteVisible: false
         };
     },
     mounted() {
@@ -125,6 +130,18 @@ export default {
             } catch (e) {
                 console.log(e)
             }
+        },
+        showEdit(){
+            this.isEditVisible = true
+        },  
+        closeModal(){
+            this.isEditVisible = false
+        },
+        showDelete(){
+            this.isDeleteVisible = true
+        },  
+        closeDelete(){
+            this.isDeleteVisible = false
         }
     }
 }

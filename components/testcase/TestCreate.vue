@@ -93,11 +93,11 @@ export default {
     components: { TestScenario },
     props: {
         id: {
-            type: String,
+            type: Number,
             required: true
         },
         projectId: {
-            type: String,
+            type: Number,
             required: true
         },
     },
