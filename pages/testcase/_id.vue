@@ -1,19 +1,19 @@
 <template>
     <div>
-        <TestHeader @showProfile="showProfile"/>
+        <TestHeader @showProfile="showProfile" />
         <DashboardPopup v-if="isProfileVisible" />
         <div class="px-[100px] py-[50px]">
             <div class="flex justify-between">
                 <TestName test-name="LogiBug" />
+
                 <button class="bg-[#554AF0] text-white font-bold py-2 px-4 rounded" @click="showCreate">Create test
                     case</button>
             </div>
-            <TestCreate v-if="isCreateVisible" :id="id" :project-id="projectId" @hideCreate="hideCreate" />
-            <TestList :items="items" :project-id="projectId" />
+            <TestList :items="items" :project-id="projectId" :role="member" />
+
         </div>
     </div>
 </template>
-
 <script>
 
 import TestHeader from '../../components/testcase/TestHeader.vue';
@@ -28,15 +28,16 @@ export default {
     data() {
         return {
             isCreateVisible: false,
-            isProfileVisible:false,
+            isProfileVisible: false,
             id: this.$route.params.id,
             items: [],
             projectId: '',
+            member: ''
         }
     },
     mounted() {
-        this.getTestcase();
         this.getProjectid();
+        this.getMember();
     },
     methods: {
         showCreate() {
@@ -58,15 +59,38 @@ export default {
                 console.log(e)
             }
         },
-        async getProjectid() {
+        async getMember() {
             try {
-                const response = await this.$axios.$get(`/test_cases/?version_id=${this.id}`)
-                console.log(response)
-                this.items = response.data
+                const response = await this.$axios.$get(
+                    `/members?project_id=${this.id}`
+                )
+                await this.getProfile()
+                // console.log(response.data[2])
+                this.member = response.data.filter(member => member.email === this.user)[0].role;
+                // console.log(this.member)
             } catch (e) {
                 console.log(e)
             }
-        },       
+        },
+        async getProjectid() {
+            try {
+                await this.getTestcase()
+                const response = await this.$axios.$get(`/test_cases/?version_id=${this.projectId}`)
+                console.log(response)
+                this.items = response.data
+            } catch (e) {
+                console.log("error")
+            }
+        },
+        async getProfile() {
+            try {
+                const response = await this.$axios.$get('/profiles')
+                // console.log(response.data.email)
+                this.user = response.data.email
+            } catch (e) {
+                console.log(e)
+            }
+        }
     },
 }
 </script>

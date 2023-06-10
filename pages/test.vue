@@ -13,13 +13,12 @@
         <!-- <register-success></register-success> -->
         <!-- <detail-test></detail-test> -->
         <!-- <popup-invite></popup-invite> -->
-        <projects-response></projects-response>
+        <!-- <projects-response></projects-response> -->
         <!-- <report-test></report-test> -->
         <!-- <report-bar></report-bar> -->
+
     </div>
 </template>
-
-<script>
 // import CreateResult from '../components/detailtestcase/CreateResult.vue'
 // import PopupInvite from '../components/projectedit/invitemember/PopupInvite.vue'
 // import RegisterSuccess from '../components/loginform/popup/RegisterSuccess.vue';
@@ -28,11 +27,7 @@
 // import PopupMember from '../components/projectedit/invitemember/member/PopupMember.vue';
 // import PopupAddresult from '../components/projectedit/testcase/addresult/PopupAddresult.vue';
 // import PopupCreate from '../components/projectedit/createproject/PopupCreate.vue';
-// import PopupEdit from '../components/projectedit/editproject/PopupEdit.vue';
 // import PopupeditTest from '../components/projectedit/testcase/edittestcase/PopupeditTest.vue';
-// import PopupDeletetest from '../components/projectedit/testcase/popupdeletetestcase/PopupDeletetest.vue';
-// import PopupFilter from '../components/projectedit/testcase/filtertestase/PopupFilter.vue';
-// import DetailTest from '../components/detailtestcase/DetailTest.vue';
 import ProjectsResponse from '../components/apitesting/ProjectsResponse.vue';
 // import ReportBar from "../components/report/ReportBar.vue";
 // import ReportTest from '../components/report/ReportTest.vue';

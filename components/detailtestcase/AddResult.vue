@@ -4,7 +4,11 @@
       <div class="ml-auto">
         <h1 class="font-bold text-2xl">Result</h1>
         <p class="pt-3 text-sm text-[#6A6D71]">No results yet</p>
+<<<<<<< HEAD
         <div class="pt-2">
+=======
+        <div v-if="role !== 'dev'" class="pt-2">
+>>>>>>> b5c9bc73c6f7952fc2ed0792b1d4786b886ad293
           <button class="font-montserrat w-[100%] bg-[#554AF0] text-white font-bold py-2 px-4 rounded"
             @click="showCreate">
             Add result
@@ -58,6 +62,13 @@ export default {
     testId: {
       type: Number,
       required: true
+<<<<<<< HEAD
+=======
+    },
+    role: {
+      type: String,
+      required: true
+>>>>>>> b5c9bc73c6f7952fc2ed0792b1d4786b886ad293
     }
   },
   data() {
