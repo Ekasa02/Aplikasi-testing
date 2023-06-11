@@ -49,7 +49,7 @@ export default {
             try {
                 const response = await this.$axios.$post('/versions', this.newItem);
                 console.log(response);
-                window.location.reload(); // Force refresh the page
+                window.location.reload();
             } catch (error) {
                 console.log(error);
             }

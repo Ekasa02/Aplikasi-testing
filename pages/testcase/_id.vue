@@ -79,7 +79,7 @@ export default {
       try {
         await this.getTestcase()
         const response = await this.$axios.$get(
-          `/test_cases/?version_id=${this.projectId}`
+          `/test_cases/?version_id=${this.id}`
         )
         console.log(response)
         this.items = response.data
