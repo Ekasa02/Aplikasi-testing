@@ -11,7 +11,7 @@
       </div>
       <TestList :items="items" :project-id="projectId" :role="member" />
     </div>
-    <TestCreate v-if="isCreateVisible" @hideCreate="hideCreate" :project-id="projectId" :id="this.id" />
+    <TestCreate v-if="isCreateVisible" :id="id" :project-id="projectId" @hideCreate="hideCreate" />
 
   </div>
 </template>
@@ -53,11 +53,11 @@ export default {
     async getTestcase() {
       try {
         const response = await this.$axios.$get(`/versions/${this.id}`)
-        console.log(response)
+        // console.log(response)
         this.projectId = response.data[0].project_id
-        console.log(this.projectId)
+        // console.log(this.projectId)
       } catch (e) {
-        console.log(e)
+        // console.log(e)
       }
     },
     async getMember() {
@@ -72,7 +72,7 @@ export default {
         )[0].role
         // console.log(this.member)
       } catch (e) {
-        console.log(e)
+        // console.log(e)
       }
     },
     async getProjectid() {
@@ -81,10 +81,10 @@ export default {
         const response = await this.$axios.$get(
           `/test_cases/?version_id=${this.id}`
         )
-        console.log(response)
+        // console.log(response)
         this.items = response.data
       } catch (e) {
-        console.log('error')
+        // console.log('error')
       }
     },
     async getProfile() {
@@ -93,7 +93,7 @@ export default {
         // console.log(response.data.email)
         this.user = response.data.email
       } catch (e) {
-        console.log(e)
+        // console.log(e)
       }
     },
   },
