@@ -5,11 +5,7 @@
     <div class="px-[100px] py-[50px]">
       <div class="flex justify-between">
         <TestName test-name="LogiBug" />
-
-        <button
-          class="bg-[#554AF0] text-white font-bold py-2 px-4 rounded"
-          @click="showCreate"
-        >
+        <button class="bg-[#554AF0] text-white font-bold py-2 px-4 rounded" @click="showCreate">
           Create test case
         </button>
       </div>
