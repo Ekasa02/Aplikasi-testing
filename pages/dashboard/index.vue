@@ -13,8 +13,8 @@
       <DashboardLevel level="Beginner" />
       <DashboardProject />
       <div class="flex justify-between" style="margin-top: 15px">
-        <DashboardSearchproject />
-        <DashboardCreateproject @showPopup="showPopup" />
+        <DashboardSearch />
+        <DashboardButton @showPopup="showPopup" />
       </div>
       <PopupCreate v-if="isPopupVisible" @closePopup="closePopup" />
     </div>
@@ -49,6 +49,13 @@ export default {
     },
     showProfile() {
       this.isProfileVisible = !this.isProfileVisible
+    },
+    createProject(project) {
+      // console.log('run', project)
+      // console.log(project))
+
+      project.id = this.items.length + 1
+      this.items.push(project)
     },
     async getProject() {
       try {
