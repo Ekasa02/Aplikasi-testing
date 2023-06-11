@@ -42,7 +42,7 @@ export default {
             try {
                 const response = await this.$axios.delete(`/test_cases/${this.itemId}`);
                 console.log(response);
-                // window.location.reload();
+                window.location.reload();
                 // Additional logic or actions after deleting the item
             } catch (error) {
                 console.log(error);
