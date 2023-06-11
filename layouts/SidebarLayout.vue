@@ -30,11 +30,11 @@
                             <span v-show="showLabels">Report</span>
                         </NuxtLink>
                     </li>
-                    <li :class="{ 'text-gray-500': $route.path === '/report' }" class="group side-list flex justify-center">
-                        <NuxtLink to="/report">
-                            <img src="./SidebarIcons/Bell.svg" alt="report Icon" class="w-8 h-8 inline-block"
+                    <li :class="{ 'text-gray-500': $route.path === '/notif' }" class="group side-list flex justify-center">
+                        <NuxtLink to="/notif">
+                            <img src="./SidebarIcons/Bell.svg" alt="notif Icon" class="w-8 h-8 inline-block"
                                 style="filter: invert(69%) sepia(3%) saturate(22%) hue-rotate(357deg) brightness(87%) contrast(94%)"
-                                :style="($route.path === '/reports') ? 'filter: invert(26%) sepia(91%) saturate(3908%) hue-rotate(240deg) brightness(97%) contrast(95%);' : ''" />
+                                :style="($route.path === '/notif') ? 'filter: invert(26%) sepia(91%) saturate(3908%) hue-rotate(240deg) brightness(97%) contrast(95%);' : ''" />
                             <span v-show="showLabels">Notif</span>
                         </NuxtLink>
                     </li>
@@ -50,8 +50,8 @@
   
 <script>
 import Dashboard from '../views/LogibugDashboard.vue';
-// import reportPage from '../views/reportPage.vue'
-// import ReportPage from '../views/ReportPage.vue'
+// import notifPage from '../views/notifPage.vue'
+// import notifPage from '../views/notifPage.vue'
 
 export default {
     name: "SidebarLayout",
@@ -67,8 +67,8 @@ export default {
                     return Dashboard
                 // case '/issues':
                 //     return IssuesPage
-                // case '/report':
-                //     return ReportPage
+                // case '/notif':
+                //     return notifPage
                 default:
                     return Dashboard
             }

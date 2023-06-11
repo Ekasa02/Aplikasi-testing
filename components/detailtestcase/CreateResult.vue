@@ -156,7 +156,7 @@ export default {
     },
     async postResult() {
       try {
-        this.form.test_case_id = this.id
+        this.form.test_case_id = this.itemId
         const formData = new FormData()
         formData.append('actual', this.form.actual)
         formData.append('test_case_id', this.form.test_case_id)

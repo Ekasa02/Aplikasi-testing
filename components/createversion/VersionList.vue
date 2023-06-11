@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul class="list-group h-full mt-8 max-h-[70vh] overflow-y-auto">
-            <li class="list-group-item mb-2" v-for="item in items" :key="item.id">
+            <li v-for="item in items" :key="item.id" class="list-group-item mb-2" >
                 <div class="border-b border-gray-200 flex justify-between pb-5 hover:cursor-pointer"
                     @click="toCreateVersion(item.id)">
                     <div class="flex">
