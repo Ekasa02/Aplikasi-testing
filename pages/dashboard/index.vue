@@ -1,8 +1,6 @@
 <template>
   <div class="font-montserrat">
-    <div
-      class="flex items-center justify-end py-[14px] pr-[100px] border-b-[1px] border-gray-300"
-    >
+    <div class="flex items-center justify-end py-[14px] pr-[100px] border-b-[1px] border-gray-300">
       <div class="ml-auto">
         <DashboardProfile @showProfile="showProfile" />
       </div>
@@ -13,14 +11,14 @@
       <DashboardLevel level="Beginner" />
       <DashboardProject />
       <div class="flex justify-between" style="margin-top: 15px">
-        <DashboardSearch />
-        <DashboardButton @showPopup="showPopup" />
+        <DashboardSearchproject />
+        <!-- <DashboardCreateproject @showPopup="showPopup" /> -->
       </div>
-      <PopupCreate v-if="isPopupVisible" @closePopup="closePopup" />
     </div>
     <div style="padding: 20px 100px">
       <DashboardTable :items="items" @createVersion="navigateTo" />
     </div>
+    <DashboardNewproject v-if="isPopupVisible" @closePopup="closePopup" />
   </div>
 </template>
 
