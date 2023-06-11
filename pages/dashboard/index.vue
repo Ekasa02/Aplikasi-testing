@@ -13,8 +13,8 @@
       <DashboardLevel level="Beginner" />
       <DashboardProject />
       <div class="flex justify-between" style="margin-top: 15px">
-        <DashboardSearch />
-        <DashboardButton @showPopup="showPopup" />
+        <DashboardSearchproject />
+        <DashboardCreateproject @showPopup="showPopup" />
       </div>
       <PopupCreate v-if="isPopupVisible" @closePopup="closePopup" />
     </div>

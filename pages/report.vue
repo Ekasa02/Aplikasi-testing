@@ -1,10 +1,10 @@
 <template>
     <div>
-        <SettingProfile @showProfile="showProfile"/>
+        <SettingProfile @showProfile="showProfile" />
         <div class=" bg-gray-100 ">
             <DashboardPopup v-if="isProfileVisible" />
             <div class="px-14 items-center justify-center">
-                <ReportTest/>
+                <ReportTest :items="items" />
             </div>
         </div>
     </div>
@@ -14,26 +14,37 @@
 import SettingProfile from '../components/accountsetting/SettingProfile.vue';
 import ReportTest from '../components/report/ReportTest.vue';
 
-    export default {
-        data(){
-            return{
-                isProfileVisible:false,
+export default {
+    components: {
+        SettingProfile,
+        ReportTest,
+
+    },
+    layout: 'SidebarLayout',
+    data() {
+        return {
+            isProfileVisible: false,
+            items: []
+        }
+    },
+    mounted(){
+        this.getProject()
+    },
+    methods: {
+        showProfile() {
+            this.isProfileVisible = !this.isProfileVisible;
+        },
+        async getProject() {
+            try {
+                const response = await this.$axios.$get('/projects')
+                // console.log(response)
+                this.items = response.data
+            } catch (e) {
+                // console.log(e)
             }
         },
-        components:{
-            SettingProfile,
-            ReportTest,
-          
-        },
-        methods:{
-            showProfile() {
-                this.isProfileVisible = !this.isProfileVisible;
-            },
-        },
-        layout:'SidebarLayout',
-    }
+    },
+}
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
