@@ -3,8 +3,9 @@
     <div class="max-h-[43vh] overflow-y-auto">
       <ul class="list-group h-full py-4">
         <li v-for="item in items" :key="item.id" class="list-group-item mb-2">
-          <div class="flex w-full justify-between border-b border-solid py-2 hover:cursor-pointer"
-            @click="toCreateVersion(item.id)">
+          <div
+            class="flex w-full justify-between border-b border-solid py-2 hover:cursor-pointer"
+            @click="navigateToVersion(item)">
             <div class="flex items-center">
               <div class="py-2">
                 <img src="./svg/List.svg" alt="List Icon" class="h-full">
@@ -27,8 +28,7 @@
                   <div v-if="item.type_test === 'manual'" class="rounded-lg border-gray-300 border-2 border-solid px-4">
                     <p class="text-gray-700">Manual</p>
                   </div>
-                  <div
-                    v-if="item.type_test === 'automatic'"
+                  <div v-if="item.type_test === 'automatic'"
                     class="rounded-lg border-gray-300 border-2 border-solid px-4">
                     <p class="text-gray-700 text-sm">Automatic</p>
                   </div>
@@ -60,6 +60,7 @@ import PopupEdit from '../projectedit/editproject/PopupEdit.vue';
 import DashboardDelete from './DashboardDelete.vue';
 
 export default {
+  components: { PopupEdit, DashboardDelete },
   props: {
     items: {
       type: Array,
@@ -75,6 +76,13 @@ export default {
     };
   },
   methods: {
+    navigateToVersion(item) {
+      if (item.type_test === 'manual') {
+        this.toCreateVersion(item.id);
+      } else if (item.type_test === 'automatic') {
+        this.toAutomaticVersion(item.id);
+      }
+    },
     editPopup(item) {
       this.selectedItem = item;
       this.isEditVisible = true;
@@ -86,26 +94,15 @@ export default {
     hideDelete() {
       this.isPopupDelete = false;
     },
-    // async deleteItem() {
-    //   try {
-    //     const response = await this.$axios.delete(`/projects/${this.deleteItemId}`);
-    //     console.log(response);
-    //     // Additional logic or actions after deleting the item
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    //   this.isPopupDelete = false;
-    // },
     closeEdit() {
       this.isEditVisible = false;
-      // Additional logic or actions after closing the edit popup
     },
     toCreateVersion(id) {
       this.$emit("createVersion", `/createversion/${id}`);
-      // this.$router.push(`/createversion/${id}`);
-      // window.location.reload();
+    },
+    toAutomaticVersion(id) {
+      this.$emit("createVersion", `/automaticversion/${id}`);
     }
   },
-  components: { PopupEdit, DashboardDelete }
 };
 </script>

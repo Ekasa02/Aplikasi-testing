@@ -2,17 +2,16 @@
   <div>
     <VersionHeader @showProfile="showProfile" />
     <DashboardPopup v-if="isProfileVisible" />
-
     <div class="px-[100px] py-[50px]">
       <div class="flex justify-between">
         <VersionName project-name="Logibug" platform="Mobile" type-test="Manual" />
         <div class="flex gap-x-4">
-          <button 
+          <button
             class="bg-[#FFFFFF] text-[#554AF0] font-bold py-2 px-4 rounded border border-[#554AF0] hover:text-white hover:bg-red-500"
             @click="infoInvite">
             Invite
           </button>
-          <PopupInvite v-if="isPopupInvite" :id="id" @closeInvite="closeInvite"  />
+          <PopupInvite v-if="isPopupInvite" :id="id" @closeInvite="closeInvite" />
           <button v-if="member !== 'dev'" class="bg-[#554AF0] text-white font-bold py-2 px-4 rounded" @click="showCreate">
             Create version
           </button>

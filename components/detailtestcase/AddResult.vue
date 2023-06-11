@@ -1,23 +1,30 @@
 <template>
   <div>
-    <div v-if="items.length === 0" class="bg-white w-[75%] min-h-[60vh] rounded-lg shadow-lg px-8 py-8 float-right mt-5">
+    <div
+      v-if="items.length === 0"
+      class="bg-white w-[75%] min-h-[60vh] rounded-lg shadow-lg px-8 py-8 float-right mt-5"
+    >
       <div class="ml-auto">
         <h1 class="font-bold text-2xl">Result</h1>
         <p class="pt-3 text-sm text-[#6A6D71]">No results yet</p>
         <div v-if="role !== 'dev'" class="pt-2">
-          <button class="font-montserrat w-[100%] bg-[#554AF0] text-white font-bold py-2 px-4 rounded"
-            @click="showCreate">
+          <button
+            class="font-montserrat w-[100%] bg-[#554AF0] text-white font-bold py-2 px-4 rounded"
+            @click="showCreate"
+          >
             Add result
           </button>
         </div>
       </div>
     </div>
     <div v-else>
-      <div class="rounded-[20px] border border-[#B3B3B3] px-[40px] py-[20px] overflow-y-auto max-h-[65vh]">
+      <div
+        class="rounded-[20px] border border-[#B3B3B3] px-[40px] py-[20px] overflow-y-auto max-h-[65vh]"
+      >
         <div class="flex justify-between items-center">
           <h1 class="font-bold text-2xl">Result</h1>
           <button @click="showEdit">
-            <img src="./svg/Edit.svg" class="h-[18px] w-[18px]" alt="">
+            <img src="./svg/Edit.svg" class="h-[18px] w-[18px]" alt="" />
           </button>
         </div>
         <h1 class="mt-4 font-semibold text-xl">Actually</h1>
@@ -37,10 +44,14 @@
         <h1 class="mt-4 font-semibold text-xl">Note</h1>
         <p>{{ items.note }}</p>
         <h1 class="mt-4 font-semibold text-xl">Attachment</h1>
-        <img :src="items.img_url" alt="">
+        <img :src="items.img_url" alt="" />
       </div>
     </div>
-    <CreateResult v-if="isCreateVisible" :item-id="itemId" @hideCreate="hideCreate" />
+    <CreateResult
+      v-if="isCreateVisible"
+      :item-id="itemId"
+      @hideCreate="hideCreate"
+    />
     <EditResult v-if="isEditVisible" :items="items" @hideEdit="hideEdit" />
   </div>
 </template>
@@ -72,7 +83,9 @@ export default {
     };
   },
   mounted() {
-    this.getTestcase();
+    this.$nextTick(() => {
+      this.getTestcase();
+      });
   },
   methods: {
     showCreate() {
@@ -88,15 +101,15 @@ export default {
       this.isEditVisible = false;
     },
     async getTestcase() {
-      try {
-        this.isLoading = true;
-        const response = await this.$axios.$get(`/results?test_case_id=${this.itemId}`);
-        console.log(response);
-        this.items = response.data; // Assign the array of results to the "items" data property
-      } catch (e) {
-        console.log(e);
-      } finally {
-        this.isLoading = false;
+      if (this.itemId) {
+        console.log("yes")
+        try {
+          const response = await this.$axios.$get(`/results?test_case_id=${this.itemId}`);
+          console.log(response);
+          this.items = response.data;
+        } catch (e) {
+          console.log(e);
+        }
       }
     }
   },
