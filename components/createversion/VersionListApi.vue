@@ -3,7 +3,7 @@
         <ul class="list-group h-full mt-8 max-h-[70vh] overflow-y-auto">
             <li class="list-group-item mb-2" v-for="item in items" :key="item.id">
                 <div class="border-b border-gray-200 flex justify-between pb-5 hover:cursor-pointer"
-                    @click="toCreateVersion(item.id)">
+                    @click="toApiTesting(item.id)">
                     <div class="flex">
                         <h1 class="font-semibold text-xl">{{ item.name }}</h1>
                     </div>
@@ -64,8 +64,8 @@ export default {
         deleteVersion() {
             this.isDeleteVisible = false;
         },
-        toCreateVersion(id) {
-            this.$router.push(`/testcase/${id}`);
+        toApiTesting(id) {
+            this.$router.push(`/apitesting/${id}`);
         },
         deleteProject() {
             this.isPopupDelete = true
