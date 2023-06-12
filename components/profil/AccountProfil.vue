@@ -27,7 +27,7 @@
       async getProfile() {
             try {
                 const response = await this.$axios.$get('/profiles')
-                console.log(response)
+                console.log('data'+ response)
                 this.items = response.data
             } catch (e) {
                 console.log(e)

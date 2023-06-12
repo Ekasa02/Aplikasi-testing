@@ -56,7 +56,8 @@ export default {
     },
     data(){
       return{
-        items:[]
+        items:[],
+        img_data: []
       }
     },
     mounted (){
@@ -66,8 +67,10 @@ export default {
       async getProfile() {
             try {
                 const response = await this.$axios.$get('/profiles')
-                console.log(response)
-                this.items = response.data
+                this.items=response.data
+                // console.log('tess')
+                // this.items = response.data
+                // console.log('xx'+ items)
             } catch (e) {
                 console.log(e)
             }
