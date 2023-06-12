@@ -4,7 +4,8 @@
       <div class="relative mb-4">
         <input id="name" v-model="name" type="text"
           class="block px-12 py-2 w-full text-gray-900 bg-transparent rounded-lg border border-solid border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-          placeholder=" " />
+          placeholder=" " 
+          @blur="validateName"/>
         <label for="name"
           class="absolute text-[#4D4D4D] font-medium duration-300 transform -translate-y-4 scale-75 top-2 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:-top-1 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:scale-75 peer-focus:-translate-y-2 left-10">Name</label>
         <img src="../svg/User.svg" alt="Mail Icon" class="absolute left-3 top-2.5 h-5 w-5" />
@@ -17,7 +18,7 @@
           'block px-12 py-2 w-full text-gray-900 bg-transparent rounded-lg border border-solid',
           isInvalidEmail ? 'border-red-500' : 'border-gray-300',
           'appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer',
-        ]" placeholder=" " />
+        ]" placeholder=" " @blur="validateEmail" />
         <label for="email"
           class="absolute text-[#4D4D4D] font-medium duration-300 transform -translate-y-4 scale-75 top-2 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:-top-1 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:scale-75 peer-focus:-translate-y-2 left-10">
           Email
@@ -32,7 +33,7 @@
           'block px-12 py-2 w-full text-gray-900 bg-transparent rounded-lg border border-solid',
           isInvalidPassword ? 'border-red-500' : 'border-gray-300',
           'appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer',
-        ]" placeholder=" " />
+        ]" placeholder=" " @blur="validatePassword" />
         <label for="password"
           class="absolute text-[#4D4D4D] font-medium duration-300 transform -translate-y-4 scale-75 top-2 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:-top-1 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:scale-75 peer-focus:-translate-y-2 left-10">Password</label>
         <img src="../svg/Password.svg" alt="Lock Icon" class="absolute left-3 top-2.5 h-5 w-5" />
@@ -47,7 +48,7 @@
           'block px-12 py-2 w-full text-gray-900 bg-transparent rounded-lg border border-solid',
           isInvalidConfirmPassword ? 'border-red-500' : 'border-gray-300',
           'appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer',
-        ]" placeholder=" "/>
+        ]" placeholder=" " @blur="validateConfirmPassword" />
         <label for="confirmPassword"
           class="absolute text-[#4D4D4D] font-medium duration-300 transform -translate-y-4 scale-75 top-2 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:-top-1 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:scale-75 peer-focus:-translate-y-2 left-10">Confirm
           Password</label>
@@ -136,6 +137,9 @@ export default {
         this.validateConfirmPassword()
         this.validateName()
 
+
+        // console.log(this.isInvalidEmail,this.isInvalidPassword,this.isInvalidName,this.isInvalidConfirmPassword)
+
         if(this.isInvalidEmail && this.isInvalidPassword && this.isInvalidName && this.isInvalidConfirmPassword){
             await this.$axios.$post('/users', {
               name: this.name,
@@ -143,10 +147,18 @@ export default {
               password: this.password,
               password_confirmation: this.confirmPassword
             });
+
             this.$router.push('/login')
         }
+        // if(!this.isInvalidEmail && !this.isInvalidConfirmPassword && !this.isInvalidEmail){
+        //   console.log(response.data);
+        //   this.registerPopup = true;
+
+        // }
+        // Success, redirect to dashboard or home page
       } catch (error) {
         console.error(error);
+        // Display error message to user
       }
     }
 
