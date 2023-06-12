@@ -3,9 +3,12 @@
         <div class="bg-white p-8 rounded-lg shadow-lg">
             <div class="">
                 <img src="../assets/CloseCircle.svg" alt="image" class="cursor-pointer float-right" @click="deleteProject">
+                
             </div>
-            <div class="pl-14 ">
+            <div class="px-5 items-center justify-center font-montserrat">
                 <img class="" src="../assets/Delete.svg" alt="image">
+                <p class="text-center py-2">Are you sure to delete project</p>
+                <h1 class="text-center font-bold">Logibug v1</h1>
             </div>
             <div class="flex pt-[30px] justify-center items-center gap-x-5">
                 <button
