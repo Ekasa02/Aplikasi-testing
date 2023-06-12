@@ -7,7 +7,7 @@
                 <UploadApi :version-id="id" />
             </div>
         </div>
-        <ProjectsResponse v-if="responseTrue" class="py-[50px] px-[100px]" :items="items" :version-name="version"/>
+        <ProjectsResponse v-if="responseTrue" class="py-[50px] px-[100px]" :version-id="id" :items="items" :version-name="version" />
     </div>
 </template>
   

@@ -1,7 +1,7 @@
 <template>
   <div class="max-h-[70vh] overflow-y-auto">
     <ul class="list-group h-full mt-[40px]">
-      <li class="list-group-item" v-for="item in items" :key="item.id" @click="toDetailTest(item.version_id)">
+      <li class="list-group-item" v-for="item in items" :key="item.id" @click="toDetailTest(item.id)">
         <div class="border-b border-gray-200 pb-[10px] flex gap-x-5 mb-[10px] cursor-pointer">
           <div class="w-3 h-[70px] rounded-xl" :class="getCategoryColor(item.test_category)"></div>
           <div>

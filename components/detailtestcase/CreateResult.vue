@@ -105,7 +105,11 @@ export default {
         img_url: '',
         test_case_id: '',
       },
+      userId: '',
     }
+  },
+  mounted() {
+    this.getProfile()
   },
   methods: {
     handleFile(e) {
@@ -122,6 +126,7 @@ export default {
         formData.append('priority', this.form.priority)
         formData.append('severity', this.form.severity)
         formData.append('img_url', this.form.img_url)
+        formData.append('user_id', this.userId)
         const response = await this.$axios.$post('/results', formData)
         console.log(response)
         window.location.reload()
@@ -131,6 +136,15 @@ export default {
     },
     hideCreate() {
       this.$emit('hideCreate')
+    },
+    async getProfile() {
+      try {
+        const response = await this.$axios.$get(`/profiles`);
+        console.log(response);
+        this.userId = response.data.id;
+      } catch (e) {
+        console.log(e);
+      }
     },
   },
 }
