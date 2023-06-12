@@ -56,8 +56,9 @@ export default {
   },
   props: {
     itemId: {
-      type: String,
-      required: true
+      type: [String, Number],
+      required: true,
+      default: null
     },
     role: {
       type: String,
@@ -73,7 +74,9 @@ export default {
     };
   },
   mounted() {
-    this.getResult();
+    setTimeout(() => {
+      this.getResult();
+    }, 500);
   },
   methods: {
     showCreate() {
@@ -93,11 +96,11 @@ export default {
         const response = await this.$axios.$get(`/results?test_case_id=${this.itemId}`);
         console.log(response);
         this.items = response.data;
+        this.result = true
       } catch (e) {
         console.log(e);
-        this.items = [];
       }
-    }
+    },
   },
 };
 </script>

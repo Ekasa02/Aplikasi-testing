@@ -18,7 +18,7 @@
                         </button>
                     </div>
                 </div>
-                <h1 class="text-xl font-semibold">{{ items.length > 0 ? items[0].testcase : '' }}</h1>
+                <h1 class="text-xl font-semibold">{{ items.testcase }}</h1>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="w-2/3">
                         <div class="mt-4">
@@ -29,20 +29,20 @@
                             <h1 class="font-semibold text-xl">Test Category</h1>
                             <div
                                 class="font-Montserrat w-min text-[13px] bg-[#FCD051] text-white leading-[18px] py-2 px-5 rounded-md mt-2">
-                                {{ items.length > 0 ? items[0].test_category : '' }}
+                                {{ items.test_category }}
                             </div>
                         </div>
                         <div class="mt-4">
                             <h1 class="font-semibold text-xl">Pre Condition</h1>
-                            <p class="mt-2">{{ items.length > 0 ? items[0].pre_condition : '' }}</p>
+                            <p class="mt-2">{{ items.pre_condition }}</p>
                         </div>
                         <div class="mt-4">
                             <h1 class="font-semibold text-xl">Test Steps</h1>
-                            <p class="mt-2">{{ items.length > 0 ? items[0].test_step : '' }}</p>
+                            <p class="mt-2">{{ items.test_step }}</p>
                         </div>
                         <div class="mt-4">
                             <h1 class="font-semibold text-xl">Expectation</h1>
-                            <p class="mt-2">{{ items.length > 0 ? items[0].expectation : '' }}</p>
+                            <p class="mt-2">{{items.expectation }}</p>
                         </div>
                     </div>
                     <div class="">
@@ -92,11 +92,11 @@ export default {
     methods: {
         async getTestcase() {
             try {
-                const response = await this.$axios.$get(`/test_cases/?version_id=${this.id}`);
+                const response = await this.$axios.$get(`/test_cases/${this.id}`);
                 this.items = response.data
-                this.itemId = response.data[0].id
-                this.projectId = response.data[0].project_id
-                this.scenarioId = response.data[0].scenario_id
+                this.itemId = response.data.id
+                this.projectId = response.data.project_id
+                this.scenarioId = response.data.scenario_id
             } catch (e) {
                 console.log(e);
             }
