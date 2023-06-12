@@ -1,6 +1,8 @@
 <template>
-  <div class="bg-[#EDF1FF] py-[70px] px-[60px]">
-    <TextPage />
+  <div  id="features" class="bg-[#EDF1FF] py-[70px] px-[60px]">
+    <div  class="text-center w-[100%]">
+      <h1 class="text-3xl font-bold font-montserrat">LogiBug is equipped with many features that will help streamline your testing process</h1>
+    </div>
     <div class="flex-1 flex align-items-center justify-center items-center gap-x-[40px] mt-[40px] md:mt-[80px]">
       <div class="text-center font-montserrat">
         <h1 class="text-xl lg:text-3xl font-bold pb-[30px] lg:pb-[40px]">Access Logibug anytime and <br /> anywhere</h1>
@@ -34,11 +36,11 @@
 </template>
 
 <script>
-import TextPage from './TextPage.vue';
+// import TextPage from './TextPage.vue';
 
 export default {
   components: {
-    TextPage,
+    // TextPage,
   },
 };
 </script>

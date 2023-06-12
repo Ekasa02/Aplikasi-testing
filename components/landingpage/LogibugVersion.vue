@@ -1,5 +1,5 @@
 <template>
-  <div class="py-[70px] flex flex-col justify-center items-center font-monserrat overflow-hidden px-[30px]">
+  <div  class="py-[70px] flex flex-col justify-center items-center font-monserrat overflow-hidden px-[30px]">
     <TextPage />
     <div
       class="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:gap-x-[20px] lg:gap-x-[40px] md:justify-center mt-[50px]">
