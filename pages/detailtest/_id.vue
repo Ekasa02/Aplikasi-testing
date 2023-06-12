@@ -1,6 +1,7 @@
 <template>
     <div>
-        <DetailHeader />
+        <DetailHeader @showProfile="showProfile"/>
+        <DashboardPopup v-if="isProfileVisible" />
         <div class="px-[100px] py-[50px] font-montserrat">
             <div>
                 <div class="flex gap-x-2">
@@ -61,13 +62,17 @@ import AddResult from '../../components/detailtestcase/AddResult.vue';
 import DetailHeader from '../../components/detailtestcase/DetailHeader.vue';
 import EditTest from '../../components/detailtestcase/EditTest.vue';
 import DeleteTest from '../../components/detailtestcase/DeleteTest.vue';
+import DashboardPopup from '../../components/dashboard/DashboardPopup.vue';
+
 
 export default {
     components: {
         AddResult,
         DetailHeader,
         EditTest,
-        DeleteTest
+        DeleteTest,
+    DashboardPopup
+
     },
     layout: "SidebarLayout",
     data() {
@@ -80,7 +85,9 @@ export default {
             scenarioId: '',
             scenario: '',
             isEditVisible: false,
-            isDeleteVisible: false
+            isDeleteVisible: false,
+      isProfileVisible: false,
+
         };
     },
     mounted() {
@@ -148,6 +155,9 @@ export default {
         showDelete() {
             this.isDeleteVisible = true
         },
+        showProfile() {
+      this.isProfileVisible = !this.isProfileVisible;
+    },
         closeDelete() {
             this.isDeleteVisible = false
         }
