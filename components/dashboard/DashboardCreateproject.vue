@@ -4,17 +4,17 @@
             @click="showPopup">
             Create Project
         </button>
-        <!-- <PopupCreate v-if="showPopup" @close="closePopup" /> -->
+        <PopupCreate v-if="showPopup" @close="closePopup" />
     </div>
 </template>
   
 <script>
-// import PopupCreate from '../projectedit/createproject/PopupCreate.vue'
+import PopupCreate from '../projectedit/createproject/PopupCreate.vue'
 
 export default {
-    // components: {
-    //     PopupCreate
-    // },
+    components: {
+        PopupCreate
+    },
     data() {
     },
     methods: {
