@@ -1,26 +1,19 @@
 <template>
-  <div>
-    <div
-      v-if="items.length === 0"
-      class="bg-white w-[75%] min-h-[60vh] rounded-lg shadow-lg px-8 py-8 float-right mt-5"
-    >
+  <div v-if="itemId !== ''">
+    <div v-if="!result" class="bg-white w-[75%] min-h-[60vh] rounded-lg shadow-lg px-8 py-8 float-right mt-5">
       <div class="ml-auto">
         <h1 class="font-bold text-2xl">Result</h1>
         <p class="pt-3 text-sm text-[#6A6D71]">No results yet</p>
         <div v-if="role !== 'dev'" class="pt-2">
-          <button
-            class="font-montserrat w-[100%] bg-[#554AF0] text-white font-bold py-2 px-4 rounded"
-            @click="showCreate"
-          >
+          <button class="font-montserrat w-[100%] bg-[#554AF0] text-white font-bold py-2 px-4 rounded"
+            @click="showCreate">
             Add result
           </button>
         </div>
       </div>
     </div>
     <div v-else>
-      <div
-        class="rounded-[20px] border border-[#B3B3B3] px-[40px] py-[20px] overflow-y-auto max-h-[65vh]"
-      >
+      <div class="rounded-[20px] border border-[#B3B3B3] px-[40px] py-[20px] overflow-y-auto max-h-[65vh]">
         <div class="flex justify-between items-center">
           <h1 class="font-bold text-2xl">Result</h1>
           <button @click="showEdit">
@@ -47,11 +40,7 @@
         <img :src="items.img_url" alt="" />
       </div>
     </div>
-    <CreateResult
-      v-if="isCreateVisible"
-      :item-id="itemId"
-      @hideCreate="hideCreate"
-    />
+    <CreateResult v-if="isCreateVisible" :item-id="itemId" @hideCreate="hideCreate" />
     <EditResult v-if="isEditVisible" :items="items" @hideEdit="hideEdit" />
   </div>
 </template>
@@ -67,7 +56,7 @@ export default {
   },
   props: {
     itemId: {
-      type: Number,
+      type: String,
       required: true
     },
     role: {
@@ -79,13 +68,12 @@ export default {
     return {
       isCreateVisible: false,
       isEditVisible: false,
-      items: [] // Initialize an empty array to hold the response data
+      result: false,
+      items: []
     };
   },
   mounted() {
-    this.$nextTick(() => {
-      this.getTestcase();
-      });
+    this.getResult();
   },
   methods: {
     showCreate() {
@@ -100,16 +88,14 @@ export default {
     hideEdit() {
       this.isEditVisible = false;
     },
-    async getTestcase() {
-      if (this.itemId) {
-        console.log("yes")
-        try {
-          const response = await this.$axios.$get(`/results?test_case_id=${this.itemId}`);
-          console.log(response);
-          this.items = response.data;
-        } catch (e) {
-          console.log(e);
-        }
+    async getResult() {
+      try {
+        const response = await this.$axios.$get(`/results?test_case_id=${this.itemId}`);
+        console.log(response);
+        this.items = response.data;
+      } catch (e) {
+        console.log(e);
+        this.items = [];
       }
     }
   },
