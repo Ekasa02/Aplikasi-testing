@@ -23,13 +23,12 @@
                     <div class="w-2/3">
                         <div class="mt-4">
                             <h1 class="font-semibold text-xl">Scenario</h1>
-                            <p class="mt-2">{{ items.length > 0 ? items[0].scenario_id : '' }}</p>
+                            <p class="mt-2">{{ scenario }}</p>
                         </div>
                         <div class="mt-4">
                             <h1 class="font-semibold text-xl">Test Category</h1>
                             <div
                                 class="font-Montserrat w-min text-[13px] bg-[#FCD051] text-white leading-[18px] py-2 px-5 rounded-md mt-2">
-                                <!-- <img class="pr-1 h-4 my-auto" src="../../components/assets/PlusWhite.svg" /> -->
                                 {{ items.length > 0 ? items[0].test_category : '' }}
                             </div>
                         </div>
@@ -78,23 +77,26 @@ export default {
             itemId: '',
             projectId: '',
             member: '',
+            scenarioId: '',
+            scenario: '',
             isEditVisible: false,
             isDeleteVisible: false
         };
     },
     mounted() {
-        this.getProjectid();
-        this.getMember();
+        this.getTestcase().then(() => {
+            this.getMember();
+            this.getScenario();
+        });
     },
     methods: {
         async getTestcase() {
             try {
                 const response = await this.$axios.$get(`/test_cases/?version_id=${this.id}`);
-                console.log(response);
-                this.items = response.data;
-                this.itemId = response.data[0].id;
-                this.projectId = response.data[0].project_id;
-                console.log(this.itemId)
+                this.items = response.data
+                this.itemId = response.data[0].id
+                this.projectId = response.data[0].project_id
+                this.scenarioId = response.data[0].scenario_id
             } catch (e) {
                 console.log(e);
             }
@@ -102,45 +104,51 @@ export default {
         async getMember() {
             try {
                 const response = await this.$axios.$get(
-                    `/members?project_id=${this.id}`
+                    `/members?project_id=${this.projectId}`
                 )
                 await this.getProfile()
-                // console.log(response.data[2])
                 this.member = response.data.filter(member => member.email === this.user)[0].role;
-                // console.log(this.member)
             } catch (e) {
                 console.log(e)
             }
         },
-        async getProjectid() {
-            try {
-                await this.getTestcase();
-                const response = await this.$axios.$get(`/test_cases/?version_id=${this.projectId}`)
-                console.log(response)
-                this.items = response.data
-            } catch (e) {
-                console.log("error")
-            }
-        },
+        // async getProjectid() {
+        //     try {
+        //         await this.getTestcase();
+        //         const response = await this.$axios.$get(`/test_cases/?version_id=${this.projectId}`)
+        //         console.log(response)
+        //         this.items = response.data
+        //     } catch (e) {
+        //         console.log("error")
+        //     }
+        // },
         async getProfile() {
             try {
                 const response = await this.$axios.$get('/profiles')
-                // console.log(response.data.email)
                 this.user = response.data.email
             } catch (e) {
                 console.log(e)
             }
         },
-        showEdit(){
+        async getScenario() {
+            try {
+                const response = await this.$axios.$get(`/scenarios/${this.scenarioId}`);
+                console.log(response);
+                this.scenario = response.data.name; // Update this line to access the scenario name correctly
+            } catch (e) {
+                console.log(e);
+            }
+        },
+        showEdit() {
             this.isEditVisible = true
-        },  
-        closeModal(){
+        },
+        closeModal() {
             this.isEditVisible = false
         },
-        showDelete(){
+        showDelete() {
             this.isDeleteVisible = true
-        },  
-        closeDelete(){
+        },
+        closeDelete() {
             this.isDeleteVisible = false
         }
     }

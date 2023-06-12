@@ -4,12 +4,12 @@
     <div class="grid grid-cols-2 gap-8 overflow-x-auto">
       <div v-for="item in items" :key="item">
         <div class="bg-[#FFFFFF] rounded px-5">
-          <div class="flex items-center gap-2 py-3">
+          <div class="flex items-center gap-2 py-4">
             <div>
               <img src="../assets/version.svg" />
             </div>
             <div>
-              <div class="flex gap-1">
+              <div class="flex gap-x-3 items-center">
                 <p>{{ title }}</p>
                 <div v-if="platform === 'mobile'">
                   <img src="../assets/ReportMobile.svg" />
@@ -28,18 +28,22 @@
             </div>
           </div>
         </div>
-        <div class="bg-white px-5 py-5 rounded">
+        <div class="bg-white px-5 py-4 rounded">
           <div class="w-full bg-[#CDCBFC] rounded-lg">
-            <div class="h-4 bg-[#554AF0] rounded-lg" style="width: 50%"></div>
+            <div class="h-4 bg-[#554AF0] rounded-lg"
+              :style="{ width: calculateProgressBarWidth(item.test_case_pass_count, item.test_case_count) }"></div>
           </div>
-          <p class="truncate py-1">Test case.............................{{ item.test_case_count }}</p>
-          <p class="truncate py-1">Pass...................................{{ item.test_case_pass_count }}</p>
-          <p class="truncate py-1">Fail...................................{{ item.test_case_fail_count }}</p>
+          <div class="flex gap-x-4 mt-2 text-lg text-gray-500">
+            <p class="truncate py-1">Test case: {{ item.test_case_count }}</p>
+            <p class="truncate py-1">Pass: <span class="text-[#2BE51A]">{{ item.test_case_pass_count }}</span></p>
+            <p class="truncate py-1">Fail: <span class="text-[#FF0000]">{{ item.test_case_fail_count }}</span></p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 <script>
 export default {
   props: {
@@ -64,6 +68,7 @@ export default {
     async fetchReport() {
       try {
         const response = await this.$axios.$get(`/report/${this.projectId}`);
+        console.log(response)
         this.items = response.data.versions
         this.title = response.data.project_name
         // console.log(this.items)
@@ -80,9 +85,17 @@ export default {
         // console.log(e)
       }
     },
+    calculateProgressBarWidth(passCount, totalCount) {
+      if (totalCount === 0) {
+        return '0%';
+      }
+      const passRatio = (passCount / totalCount) * 100;
+      return `${passRatio}%`;
+    }
   }
 }
 </script>
+
 <style>
 .truncate {
   overflow: hidden;
