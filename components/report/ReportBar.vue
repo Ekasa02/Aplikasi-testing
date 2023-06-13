@@ -34,7 +34,8 @@
               :style="{ width: calculateProgressBarWidth(item.test_case_pass_count, item.test_case_count) }">
             </div>
             <span class="text-white font-medium absolute left-[290px]">
-              {{ item.test_case_pass_count }}/{{ item.test_case_count }}
+              {{ isNaN(item.test_case_pass_count / item.test_case_count) ? 0 : Math.round((item.test_case_pass_count /
+                item.test_case_count) * 100) }}
             </span>
           </div>
           <div class="flex gap-x-4 mt-2 text-lg text-gray-500">
