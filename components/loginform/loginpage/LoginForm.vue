@@ -69,8 +69,8 @@
           The password you entered is incorrect
         </p>
       </div>
-      <nuxt-link to="/forgotpass" >
-        <span class="text-[#554AF0]">Forgot Password?</span>
+      <nuxt-link to="/forgotpass" 
+        class="text-[#554AF0]">Forgot Password?
       </nuxt-link>
       <div class="mb-6 pt-4">
         <button

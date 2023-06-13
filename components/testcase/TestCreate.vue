@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed inset-0 flex items-center justify-center">
+    <div class="font-montserrat fixed inset-0 flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg shadow-lg w-[35%] max-h-[80vh] overflow-hidden">
             <div class="flex justify-between">
                 <h1 class="font-Montserrat font-bold text-2xl pr-12">Create test case</h1>
@@ -9,12 +9,12 @@
             <div class="overflow-y-auto max-h-[60vh] pr-5">
                 <form @submit.prevent="createTestCase">
                     <div class="relative">
-                        <label class="block font-['Montserrat'] font-bold text-[14px] mb-2" for="testcase">
+                        <label class="block  font-bold text-[14px] mb-2" for="testcase">
                             Test case
                         </label>
                         <input id="testcase" v-model="newItem.testcase"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text" placeholder="Test case">
+                            type="text" placeholder="Test case" required> 
                     </div>
                     <div class="relative pt-[15px]">
                         <label class="block font-Montserrat font-bold text-[14px] mb-2" for="scenario">
@@ -54,7 +54,7 @@
                         </label>
                         <input id="pre-condition"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text" placeholder="Pre condition" v-model="newItem.pre_condition">
+                            type="text" placeholder="Pre condition" required v-model="newItem.pre_condition">
                     </div>
                     <div class="pt-[15px] relative">
                         <label class="block font-['Montserrat'] font-bold text-[14px] mb-2" for="test-step">
@@ -62,7 +62,7 @@
                         </label>
                         <textarea id="test-step"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            rows="4" placeholder="Steps" v-model="newItem.test_step">
+                            rows="4" placeholder="Steps" required v-model="newItem.test_step">
               </textarea>
                     </div>
                     <div class="pt-[15px] relative">
@@ -71,7 +71,7 @@
                         </label>
                         <input id="expectation"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text" placeholder="Expectation" v-model="newItem.expectation">
+                            type="text" placeholder="Expectation" required v-model="newItem.expectation">
                     </div>
                     <div class="pt-[50px]">
                         <button class="font-['Montserrat'] bg-[#554AF0] text-white font-bold py-2 px-4 rounded" 
