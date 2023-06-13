@@ -2,8 +2,7 @@
     <div class="bg-[#33333385] fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg shadow-lg">
             <div class="">
-                <img src="../assets/CloseCircle.svg" alt="image" class="cursor-pointer float-right" @click="deleteProject">
-                
+                <img src="../assets/CloseCircle.svg" alt="image" class="cursor-pointer float-right" @click="deleteProject">              
             </div>
             <div class="px-5 items-center justify-center font-montserrat">
                 <img class="" src="../assets/Delete.svg" alt="image">
@@ -13,7 +12,7 @@
             <div class="flex pt-[30px] justify-center items-center gap-x-5">
                 <button
                     class="bg-[#FFFFFF] font-['Montserrat'] text-[#554AF0] font-bold py-2 px-4 rounded border border-[#554AF0] hover:text-white hover:bg-red-500"
-                    @click="cancelDelete">
+                    @click="deleteProject">
                     Cancel
                 </button>
                 <button class="font-['Montserrat'] bg-[#554AF0] text-white font-bold py-2 px-4 rounded" @click="deleteItem">
