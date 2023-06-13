@@ -3,8 +3,8 @@
     <div class="md:w-2/5 px-[30px] py-[30px] lg:px-[60px] flex items-center justify-items-center">
       <div class="margin-x-auto">
         <LogibugLogo />
-        <changepass-title />
-        <changepass-form />
+        <ForgotTitle />
+        <ForgotForm />
       </div>
     </div>
     <div class="hidden md:block w-3/5 bg-blue-500">
@@ -16,21 +16,25 @@
   
 <script>
 
-import ChangepassTitle from '../components/loginform/changepassword/ChangepassTitle.vue';
-import ChangepassForm from '../components/loginform/changepassword/ChangepassForm.vue';
+import ForgotTitle from '../components/loginform/forgotpassword/ForgotTitle.vue';
 import LogibugLogo from '../components/major/LogibugLogo.vue';
+import ForgotForm from '../components/loginform/forgotpassword/ForgotForm.vue';
 
 export default {
   components: {
     LogibugLogo,
-    ChangepassTitle,
-    ChangepassForm,
-  },
-  auth:false,
+    ForgotTitle,
+    ForgotForm
+  }
 }
 </script>
   
-  
 <style >
+.h-screen {
+  min-height: 100vh;
+}
 
+.bg-blue-500 {
+  height: 100%;
+}
 </style>
