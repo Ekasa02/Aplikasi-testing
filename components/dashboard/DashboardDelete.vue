@@ -8,7 +8,7 @@
             <div class="px-5 items-center justify-center font-montserrat">
                 <img class="" src="../assets/Delete.svg" alt="image">
                 <p class="text-center py-2">Are you sure to delete project</p>
-                <h1 class="text-center font-bold">Logibug v1</h1>
+                <h1 class="text-center font-bold">{{project}}</h1>
             </div>
             <div class="flex pt-[30px] justify-center items-center gap-x-5">
                 <button
@@ -33,13 +33,21 @@ export default {
             required: true,
         },
     },
+    data(){
+        return{
+            project:'',
+        }
+    },
+    mounted(){
+        this.nameProject();
+    },
     methods: {
         deleteProject() {
             this.$emit("deleteProject", this.item);
         },
         async deleteItem() {
             try {
-                const response = await this.$axios.delete(`/projects/${this.item}`);
+                const response = await this.$axios.delete(`/projects/${this.user}`);
                 console.log(response);
                 window.location.reload();
                 // Additional logic or actions after deleting the item
@@ -50,6 +58,18 @@ export default {
         },
         cancelDelete() {
             this.$emit("cancelDelete");
+        },
+        async nameProject() {
+            try {
+                const response = await this.$axios.get(`/projects/${this.item}`);
+                console.log(response.data.name);
+                // window.location.reload();
+                this.project = response.data.data.name
+                // Additional logic or actions after deleting the item
+            } catch (error) {
+                console.log(error);
+            }
+            
         },
     },
 };

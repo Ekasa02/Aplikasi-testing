@@ -2,12 +2,12 @@
   <div>
     <VersionHeader @showProfile="showProfile" />
     <DashboardPopup v-if="isProfileVisible" />
-    <div class="px-[100px] py-[50px]">
+    <div class="px-[20px] py-[10px] md:px[100px] md:py[50px]">
       <div class="flex justify-between">
         <VersionName project-name="Logibug" platform="Mobile" type-test="Manual" />
         <div class="flex gap-x-4">
           <button
-            class="bg-[#FFFFFF] text-[#554AF0] font-bold py-2 px-4 rounded border border-[#554AF0] hover:text-white hover:bg-red-500"
+            class="bg-[#FFFFFF] text-[#554AF0] font-normal md:font-bold py-1 px-2 rounded border border-[#554AF0] hover:text-white hover:bg-red-500"
             @click="infoInvite">
             Invite
           </button>

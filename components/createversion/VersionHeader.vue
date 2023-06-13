@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="flex items-center justify-end py-[14px] pr-[100px] border-b-[1px] border-gray-300">
+        <div class="flex items-center justify-end py-[14px] pr-[30px] md:pr[100px] border-b-[1px] border-gray-300 ">
             <button @click="showProfile" class="ml-auto" >
                 <LogibugProfile  />
             </button>
