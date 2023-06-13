@@ -43,7 +43,6 @@
                 <img src="./svg/Edit.svg" alt="List Icon" class="h-[20px] w-[20px]">
               </button>
             </div>
-            <DashboardDelete v-if="isPopupDelete" :item="deleteItemId" @deleteProject="hideDelete" />
           </div>
         </li>
       </ul>
@@ -51,6 +50,7 @@
     <div v-if="!items.length" class="flex justify-center">
       <img src="./svg/NoProject.svg" alt="No items found." class="h-[200px]">
     </div>
+    <DashboardDelete v-if="isPopupDelete" :item="deleteItemId" @deleteProject="hideDelete" />
     <PopupEdit v-if="isEditVisible" :item="selectedItem" @closePopup="closeEdit" />
   </div>
 </template>
