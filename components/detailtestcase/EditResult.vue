@@ -167,7 +167,7 @@ export default {
 
           const response = await this.$axios.$put(`/results/${updatedItem.id}`, updatedItem);
           console.log(response);
-          window.location.reload(); // Force refresh the page
+          // window.location.reload(); // Force refresh the page
         } catch (error) {
           console.log(error);
         }

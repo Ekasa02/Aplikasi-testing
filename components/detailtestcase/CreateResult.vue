@@ -37,7 +37,7 @@
                 </select>
               </div>
               <div class="pt-[15px] relative">
-                <select id="project-name" v-model="form.priority" required
+                <select id="project-name" v-model="form.priority"
                   class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   :disabled="form.status === 'pass'">
                   <option value="" disabled selected>Priority</option>
@@ -48,7 +48,7 @@
                 </select>
               </div>
               <div class="pt-[15px] relative">
-                <select id="project-name" v-model="form.severity" required
+                <select id="project-name" v-model="form.severity"
                   class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   :disabled="form.status === 'pass'">
                   <option value="" disabled selected>Severity</option>
