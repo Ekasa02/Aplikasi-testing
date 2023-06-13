@@ -1,12 +1,12 @@
 <template>
     <div class="flex gap-x-3 items-center">
         <h1 class="text-3xl font-bold">{{ projectName }}</h1>
-        <div v-if="platform === 'Mobile'" class="text-gray-300">
+        <div v-if="platform === 'mobile'" class="text-gray-300">
             <div>
                 <img src="./svg/Mobile.svg" alt="List Icon" class="h-full">
             </div>
         </div>
-        <div v-if="platform === 'Web'" class="text-gray-300">
+        <div v-if="platform === 'web'" class="text-gray-300">
             <div>
                 <img src="./svg/Web.svg" alt="List Icon" class="h-full">
             </div>

@@ -4,7 +4,7 @@
     <DashboardPopup v-if="isProfileVisible" />
     <div class="px-[100px] py-[50px]">
       <div class="flex justify-between">
-        <VersionName project-name="Logibug" platform="Mobile" type-test="Manual" />
+        <VersionName :project-name=projects.name :platform=projects.platform type-test="Manual" />
         <div class="flex gap-x-4">
           <button
             class="bg-[#FFFFFF] text-[#554AF0] font-bold py-2 px-4 rounded border border-[#554AF0] hover:text-white hover:bg-red-500"
@@ -46,6 +46,7 @@ export default {
       isCreateVisible: false,
       id: this.$route.params.id,
       items: [],
+      projects: [],
       isPopupInvite: false,
       isProfileVisible: false,
       member: '',
@@ -58,6 +59,7 @@ export default {
   },
   mounted() {
     this.getMember()
+    this.getProject()
   },
   methods: {
     closeInvite() {
@@ -107,6 +109,16 @@ export default {
         const response = await this.$axios.$get('/profiles')
         // console.log(response.data.email)
         this.user = response.data.email
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async getProject() {
+      try {
+        const response = await this.$axios.$get(
+          `/projects/${this.id}`
+        )
+        this.projects = response.data
       } catch (e) {
         console.log(e)
       }

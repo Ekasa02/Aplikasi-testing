@@ -15,17 +15,16 @@
 </template>
   
 <script>
-
 import ForgotTitle from '../components/loginform/forgotpassword/ForgotTitle.vue';
 import LogibugLogo from '../components/major/LogibugLogo.vue';
 import ForgotForm from '../components/loginform/forgotpassword/ForgotForm.vue';
-
 export default {
   components: {
     LogibugLogo,
     ForgotTitle,
     ForgotForm
-  }
+  },
+  auth : false,
 }
 </script>
   

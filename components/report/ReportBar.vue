@@ -29,11 +29,13 @@
           </div>
         </div>
         <div class="bg-white px-5 py-4 rounded">
-          <div class="w-full bg-[#CDCBFC] rounded-lg">
-            <div class="h-4 bg-[#554AF0] rounded-lg"
+          <div class="w-full bg-[#CDCBFC] rounded-lg flex items-center h-6 relative">
+            <div class="h-6 bg-[#554AF0] rounded-lg"
               :style="{ width: calculateProgressBarWidth(item.test_case_pass_count, item.test_case_count) }">
-              
             </div>
+            <span class="text-white font-medium absolute left-[290px]">
+              {{ item.test_case_pass_count }}/{{ item.test_case_count }}
+            </span>
           </div>
           <div class="flex gap-x-4 mt-2 text-lg text-gray-500">
             <p class="truncate py-1">Test case: {{ item.test_case_count }}</p>

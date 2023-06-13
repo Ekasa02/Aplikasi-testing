@@ -5,13 +5,13 @@
       <div class="ml-auto">
         <button
           class="flex float-right font-montserrat bg-[#554AF0] text-white font-semibold py-2 px-5 rounded items-center gap-x-3"
-          @click="runGetResultForItems">
+          @click="displayResult">
           <img src="../assets/Run.svg" />
           Run
         </button>
       </div>
     </div>
-    <p class="py-4">6 Request</p>
+    <p class="py-4">{{items.length}} Request</p>
     <div v-for="item in items" :key="item.id" class="flex py-4 justify-between">
       <div class="flex">
         <button :class="getButtonClass(item.method) + ' btn-size'"
@@ -23,8 +23,9 @@
           <h1 class="font-medium">{{ item.req_name }}</h1>
         </div>
       </div>
-      <div v-if="item.responseTrue" float-right>
-        <h1 class="bg-red-100">{{ item.data }}</h1>
+      <div v-if="getResult"> 
+        <h1 v-if="item.data < 300" class="text-[#22B814]">{{ item.data }}</h1>
+        <h1 v-if="item.data >= 400" class="text-[#CC0000]">{{ item.data }}</h1>
       </div>
     </div>
   </div>
@@ -47,8 +48,13 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      getResult: false,
+    };
+  },
   mounted() {
-    // this.runGetResultForItems()
+    this.runGetResultForItems()
   },
   methods: {
     getButtonClass(method) {
@@ -65,6 +71,16 @@ export default {
           return '';
       }
     },
+    getTextColor(data) {
+      switch (data) {
+        case 200:
+          return 'text-green-500';
+        case 500:
+          return 'text-red-500';
+        default:
+          return '';
+      }
+    },
     async runGetResultForItems() {
       for (const item of this.items) {
         try {
@@ -76,6 +92,9 @@ export default {
           console.log(e);
         }
       }
+    },
+    displayResult() {
+      this.getResult = true
     }
   }
 }

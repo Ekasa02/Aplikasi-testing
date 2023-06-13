@@ -147,9 +147,8 @@ export default {
             }
             this.newItem.version_id = this.id;
             try {
-                const response = await this.$axios.$post('/test_cases', this.newItem);
-                console.log(response);
-                // window.location.reload();
+                await this.$axios.$post('/test_cases', this.newItem);
+                window.location.reload();
             } catch (error) {
                 console.log(error);
             }
