@@ -57,7 +57,8 @@ export default {
           register: '/login',
           logout: '/',
           callback: '/login',
-          home: '/'
+          home: '/',
+          
         },
         endpoints: {
           register: { url: '/users', method: 'post' },
