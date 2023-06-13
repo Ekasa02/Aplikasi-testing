@@ -1,5 +1,5 @@
 <template>
-  <div v-if="itemId !== ''">
+  <div v-if="itemId !== ''" class="font-montserrat">
     <div v-if="!result" class="bg-white w-[75%] min-h-[60vh] rounded-lg shadow-lg px-8 py-8 float-right mt-5">
       <div class="ml-auto">
         <h1 class="font-bold text-2xl">Result</h1>
@@ -20,6 +20,8 @@
             <img src="./svg/Edit.svg" class="h-[18px] w-[18px]" alt="" />
           </button>
         </div>
+        <h1 class="mt-4 font-semibold text-xl">Tester</h1>
+        <h1>{{ items.user_name }}</h1>
         <h1 class="mt-4 font-semibold text-xl">Actually</h1>
         <h1>{{ items.actual }}</h1>
         <h1 class="mt-4 font-semibold text-xl">Status</h1>

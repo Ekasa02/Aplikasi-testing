@@ -36,7 +36,7 @@ export default {
         },
         async getProject() {
             try {
-                const response = await this.$axios.$get('/projects?type_test=2')
+                const response = await this.$axios.$get('/projects')
                 // console.log(response)
                 this.items = response.data
             } catch (e) {

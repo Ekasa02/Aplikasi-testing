@@ -142,11 +142,13 @@ export default {
           testcase: this.editedItem.testcase,
           test_step: this.editedItem.test_step,
           expectation: this.editedItem.expectation,
-        })
-        console.log(response.data)
-        window.location.reload()
+          scenario_id: this.editedItem.scenario_id,
+          test_category: this.editedItem.test_category,
+        });
+        console.log(response.data);
+        window.location.reload();
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
     },
     showScenario() {
