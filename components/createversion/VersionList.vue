@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul class="list-group h-full mt-8 max-h-[70vh] overflow-y-auto">
-            <li v-for="item in items" :key="item.id" class="list-group-item mb-2" >
+            <li v-for="item in items" :key="item.id" class="list-group-item mb-2">
                 <div class="border-b border-gray-200 flex justify-between pb-5 hover:cursor-pointer"
                     @click="toCreateVersion(item.id)">
                     <div class="flex">
@@ -11,7 +11,9 @@
                         <button @click="deletePopup(item.id); $event.stopPropagation()">
                             <img src="./svg/Delete.svg" alt="List Icon" class="h-5 w-5">
                         </button>
-                        <img src="./svg/Copy.svg" alt="List Icon">
+                        <button @click="copyItemsToVersion(item); $event.stopPropagation()">
+                            <img src="./svg/Copy.svg" alt="List Icon" class="h-5 w-5"/>
+                        </button>
                         <button @click="editPopup(item); $event.stopPropagation()">
                             <img src="./svg/Edit.svg" alt="List Icon" class="h-5 w-5">
                         </button>
@@ -20,7 +22,7 @@
             </li>
         </ul>
         <VersionEdit v-if="isEditVisible" :item="selectedItem" @closePopup="closePopup" />
-        <VersionDelete v-if="isDeleteVisible" :item="deleteItem" @deleteVersion="deleteVersion"/>
+        <VersionDelete v-if="isDeleteVisible" :item="deleteItem" @deleteVersion="deleteVersion" />
     </div>
 </template>
   
@@ -69,7 +71,20 @@ export default {
         },
         deleteProject() {
             this.isPopupDelete = true
-        }
+        },
+        async copyItemsToVersion(item) {
+            try {
+                const payload = {
+                    name: item.name,
+                    project_id: item.project_id,
+                };
+                const response = await this.$axios.$post('/versions', payload);
+                console.log(response);
+                window.location.reload();
+            } catch (error) {
+                console.error(error);
+            }
+        },
     },
 }
 

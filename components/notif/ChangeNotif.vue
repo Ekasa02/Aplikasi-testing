@@ -1,17 +1,18 @@
 <template>
-  
   <div class="font-montserrat">
     <!-- items.map((item,index)=>(
     <p>{{item}}</p>
   )) -->
-    <h1 class="font-bold text-[32px] py-10">Notifikasi</h1>
-    <button class="text-blue-600 float-right">1 Unread</button>
-    <div class="flex bg-blue-100 py-2">
+    <div class="flex justify-between py-10">
+      <h1 class="font-bold text-[32px]">Notifikasi</h1>
+      <h1 class="text-blue-600 float-right">{{ items.length }} Unread</h1>
+    </div>
+    <div v-for="item in items" :key="item.id" class="flex bg-blue-100 py-2">
       <img src="../assets/Profil.svg" class="px-2 w-[80px] h-[80px]" />
-      <div v-for="item in items" :key="item.id" class="py-2 px-4 font-montserrat items-center justify-center">
-        <h1>{{item.params.result.message}}</h1>
-        <p class="text-[14px]">{{item.params.result.project_name}}</p>
-        <p class="text-[12px]">{{item.created_at}}</p>
+      <div class="py-2 px-4 font-montserrat items-center justify-center">
+        <h1>{{ item.params.result.message }}</h1>
+        <p class="text-[14px]">{{ item.params.result.project_name }}</p>
+        <p class="text-[12px]">{{ item.created_at }}</p>
       </div>
     </div>
   </div>
@@ -23,7 +24,7 @@ export default {
       isPopupVisible: false,
       isProfileVisible: false,
       items: [],
-      userId:'',
+      userId: '',
     }
   },
   mounted() {
@@ -34,7 +35,6 @@ export default {
 
   },
   methods: {
-    
     async getProfile() {
       try {
         const response = await this.$axios.$get(`/profiles`);

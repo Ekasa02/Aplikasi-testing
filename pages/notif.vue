@@ -29,6 +29,7 @@ export default {
     },
     mounted(){
         this.getProject()
+        this.markRead()
     },
     methods: {
         showProfile() {
@@ -43,6 +44,15 @@ export default {
                 // console.log(e)
             }
         },
+        async markRead() {
+            try {
+                const response = await this.$axios.$get('/notifications/mark_read_all')
+                // console.log(response)
+                this.items = response.data
+            } catch (e) {
+                // console.log(e)
+            }
+        },       
     },
 }
 </script>

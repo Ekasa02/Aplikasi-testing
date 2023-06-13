@@ -57,12 +57,12 @@
               type="text" placeholder="Pre condition" />
           </div>
           <div class="pt-[15px] relative">
-            <label class="block font-bold text-[14px] mb-2" for="test-step">
+            <label class="block font-bold text-[14px] mb-2" for="test-steps">
               Test steps
             </label>
-            <textarea id="test-step" v-model="editedItem.test_step"
+            <input id="test-steps" v-model="editedItem.test_step"
               class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              rows="4" placeholder="Steps"></textarea>
+              type="text" placeholder="Test steps" />
           </div>
           <div class="pt-[15px] relative">
             <label class="block font-bold text-[14px] mb-2" for="expectation">
@@ -72,15 +72,13 @@
               class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="text" placeholder="Expectation" />
           </div>
-          <div class="pt-[50px]">
-            <button class="bg-[#554AF0] text-white font-bold py-2 px-4 rounded" type="submit">
-              Create
-            </button>
-          </div>
+          <button class="font-['Montserrat'] bg-[#554AF0] text-white font-bold py-2 px-4 rounded mt-[50px]" type="submit">
+            Edit
+          </button>
         </form>
       </div>
     </div>
-    <TestScenario v-if="isScenarioVisible" :id="id" @hideScenario="hideScenario" />
+    <TestScenario v-if="isScenarioVisible" :project-id="projectId" @hideScenario="hideScenario" />
   </div>
 </template>
 
@@ -89,61 +87,57 @@ import TestScenario from './TestScenario.vue'
 export default {
   components: { TestScenario },
   props: {
-    item: {
-      type: Object,
-      required: true,
-    },
-    id: {
+    itemId: {
       type: Number,
       required: true,
     },
     projectId: {
-      type: String,
+      type: Number,
       required: true,
-    }
+    },
   },
   data() {
     return {
-      isScenarioVisible: false,
-      editedItem: {
-        testcase: '',
-        pre_condition: '',
-        test_step: '',
-        expectation: '',
-        scenario: []
-      },
+      editedItem: {},
+      scenario: [],
+      isScenarioVisible: false
     }
   },
   mounted() {
-    this.editedItem.testcase = this.item.testcase
-    this.editedItem.pre_condition = this.item.pre_condition
-    this.editedItem.test_step = this.item.test_step
-    this.editedItem.expectation = this.item.expectation
-    this.editedItem.test_category = this.item.test_category
+    // console.log(this.id); // Add this line to log the value of this.id
+    this.getTestdata()
     this.getScenario()
   },
   methods: {
-    showScenario() {
-      this.isScenarioVisible = true
-    },
-    hideScenario() {
-      this.isScenarioVisible = false
-    },
     closeModal() {
-      this.$emit('closePopup')
+      // Emit an event to notify the parent component to close the modal
+      this.$emit('closeModal')
+    },
+    async getTestdata() {
+      try {
+        // const tester = await this.itemId
+        const response = await this.$axios.$get(`/test_cases/${this.itemId}}`)
+        console.log(response)
+        this.editedItem = response.data
+      } catch (e) {
+        console.log('error')
+        console.log(this.id)
+      }
     },
     async getScenario() {
       try {
-        const response = await this.$axios.$get(`/scenarios/?project_id=${this.projectId}`);
-        console.log(response);
-        this.scenario = response.data;
+        const response = await this.$axios.$get(
+          `/scenarios/?project_id=${this.projectId}`
+        )
+        console.log(response)
+        this.scenario = response.data
       } catch (e) {
-        console.log(e);
+        console.log(e)
       }
     },
     async editProject() {
       try {
-        const response = await this.$axios.$put(`/projects/${this.id}`, {
+        const response = await this.$axios.$put(`/test_cases/${this.itemId}`, {
           pre_condition: this.editedItem.pre_condition,
           testcase: this.editedItem.testcase,
           test_step: this.editedItem.test_step,
@@ -155,6 +149,12 @@ export default {
         console.error(error)
       }
     },
+    showScenario() {
+      this.isScenarioVisible = true
+    },
+    hideScenario() {
+      this.isScenarioVisible = false
+    }
   },
 }
 </script>

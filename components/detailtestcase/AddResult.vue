@@ -24,16 +24,26 @@
         <h1>{{ items.actual }}</h1>
         <h1 class="mt-4 font-semibold text-xl">Status</h1>
         <div class="flex gap-x-3 text-white">
-          <div class="px-[32.5px] py-[2px] bg-red-600 rounded-lg">
-            <p>{{ items.status }}</p>
-          </div>
-          <div class="px-[32.5px] py-[2px] bg-[#FFB366] rounded-lg">
-            <p>{{ items.priority }}</p>
-          </div>
-          <div class="px-[32.5px] py-[2px] bg-[#B600C9] rounded-lg">
-            <p>{{ items.severity }}</p>
-          </div>
-        </div>
+          <div class="bg-[#22B814] px-3 py-1 rounded-xl text-white" v-if="items.status === 'pass'">
+                {{ items.status }}
+              </div>
+              <!-- <div class="bg-[#FF3333] px-3 py-1 rounded-xl text-white" v-else>
+                {{ item.status || getScenarioName(item.scenario_id) }}
+              </div> -->
+              <div v-if="items.status === 'fail'" class="px-3 py-1 rounded-xl text-white" :class="{
+                'bg-[#FFE082]': items.priority === 'low',
+                'bg-[#FFA500]': items.priority === 'medium',
+                'bg-[#FF4500]': items.priority === 'high',
+                'bg-[#831515]': items.priority === 'urgent',
+              }">
+                {{ items.priority }}
+              </div>
+              <div v-if=" items.status === 'fail' " class="bg-[#FF3333] px-3 py-1 rounded-xl text-white" :class="{
+                'bg-[#B600C9]': items.severity === 'critical',
+                'bg-[#F04AE5]': items.severity === 'major',
+                'bg-[#F9BAF3]': items.severity === 'minor',
+              }">{{ items.severity }}</div>
+            </div>
         <h1 class="mt-4 font-semibold text-xl">Note</h1>
         <p>{{ items.note }}</p>
         <h1 class="mt-4 font-semibold text-xl">Attachment</h1>

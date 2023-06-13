@@ -18,7 +18,7 @@
                 <label class="block font-['Montserrat'] font-bold text-[14px] mb-2" for="Actually">Actually</label>
                 <input v-model="form.actual" id="Actually"
                   class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  type="text" placeholder="Actually" />
+                  type="text" placeholder="Actually" required/>
               </div>
               <div class="pt-[15px] relative">
                 <label class="block font-['Montserrat'] font-bold text-[14px] mb-2" for="note">Note</label>
@@ -65,7 +65,7 @@
                 </p>
                 <div class="rounded p-4" style="border: dashed 1px #c9c5c5">
                   <label for="input-file" class="cursor-pointer">
-                    <input @change="handleFile($event)" id="input-file" type="file" accept="image/*" class="hidden" />
+                    <input @change="handleFile($event)" id="input-file" type="file" accept="image/*" class="hidden" required/>
                     <img src="./svg/upload.svg" class="pl-56" />
                     <p class="pl-40 pt-2">Click to browse files</p>
                   </label>

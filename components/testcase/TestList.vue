@@ -1,15 +1,34 @@
 <template>
   <div class="max-h-[70vh] overflow-y-auto">
     <ul class="list-group h-full mt-[40px]">
-      <li class="list-group-item" v-for="item in items" :key="item.id" @click="toDetailTest(item.id)">
+      <li class="list-group-item" v-for="item in items " :key="item.id" @click="toDetailTest(item.id)">
         <div class="border-b border-gray-200 pb-[10px] flex gap-x-5 mb-[10px] cursor-pointer">
           <div class="w-3 h-[70px] rounded-xl" :class="getCategoryColor(item.test_category)"></div>
           <div>
             <h1 class="font-semibold text-xl">{{ item.testcase }}</h1>
             <div class="flex mt-2 gap-x-2">
-              <div class="bg-indigo-800 px-3 py-1 rounded-xl text-white">{{ item.scenario_name ||
+              <div class="bg-[#8787F8] px-3 py-1 rounded-xl text-white">{{ item.scenario_name ||
                 getScenarioName(item.scenario_id) }}</div>
-              <div class="bg-yellow-400 px-3 py-1 rounded-xl text-white">{{ item.test_category }}</div>
+              <div class="bg-[#22B814] px-3 py-1 rounded-xl text-white" v-if="item.status === 'pass'">
+                {{ item.status || getScenarioName(item.scenario_id) }}
+              </div>
+              <!-- <div class="bg-[#FF3333] px-3 py-1 rounded-xl text-white" v-else>
+                {{ item.status || getScenarioName(item.scenario_id) }}
+              </div> -->
+              <div v-if="item.status === 'fail'" class="px-3 py-1 rounded-xl text-white" :class="{
+                'bg-[#FFE082]': item.priority === 'low',
+                'bg-[#FFA500]': item.priority === 'medium',
+                'bg-[#FF4500]': item.priority === 'high',
+                'bg-[#831515]': item.priority === 'urgent',
+              }">
+                {{ item.priority || getScenarioName(item.scenario_id) }}
+              </div>
+              <div v-if="item.status === 'fail'" class="bg-[#FF3333] px-3 py-1 rounded-xl text-white" :class="{
+                'bg-[#B600C9]': item.severity === 'critical',
+                'bg-[#F04AE5]': item.severity === 'major',
+                'bg-[#F9BAF3]': item.severity === 'minor',
+              }">{{ item.severity ||
+  getScenarioName(item.scenario_id) }}</div>
             </div>
           </div>
           <div v-if="role !== 'dev'" class="flex gap-x-3 items-center ml-auto">
@@ -23,7 +42,7 @@
         </div>
       </li>
     </ul>
-    <TestEdit v-if="isEditVisible" :id="id" :item="selectedItem" :project-id="projectId" @closePopup="closePopup" />
+    <TestEdit v-if="isEditVisible" :item-id="itemId" :project-id="projectId" @closeModal="closeModal" />
     <TestDelete v-if="isDeleteVisible" :item-id="deleteItemId" @closeDelete="closeDelete" />
   </div>
 </template>
@@ -50,6 +69,11 @@ export default {
       type: String,
       required: true
     },
+    filter: {
+      type: Array,
+      default: () => [],
+      required: true
+    }
   },
   data() {
     return {
@@ -58,7 +82,8 @@ export default {
       selectedItem: null,
       id: '',
       deleteItemId: null,
-      scenarioMap: {} // Map to store scenario names
+      itemId: '',
+      scenarioMap: {}
     };
   },
   computed: {
@@ -69,6 +94,9 @@ export default {
         }
         return this.scenarioMap[scenarioId] || ''; // Return scenario name from the map or empty string
       };
+    },
+    filteredItems() {
+      return this.items.filter(item => this.filter.some(filterItem => filterItem.id === item.scenario_id));
     }
   },
   methods: {
@@ -84,17 +112,23 @@ export default {
     async fetchScenarioName(scenarioId) {
       try {
         const response = await this.$axios.$get(`/scenarios/${scenarioId}`);
-        this.$set(this.scenarioMap, scenarioId, response.data.name);
+        const scenarioData = response.data;
+        this.$set(this.scenarioMap, scenarioId, {
+          name: scenarioData.name,
+          status: scenarioData.status,
+          priority: scenarioData.priority,
+          severity: scenarioData.severity
+        });
       } catch (e) {
         console.log(e);
       }
     },
     editPopup(item) {
       this.selectedItem = item;
-      this.id = item.id;
+      this.itemId = item.id;
       this.isEditVisible = true;
     },
-    closePopup() {
+    closeModal() {
       this.isEditVisible = false;
     },
     deletePopup(id) {

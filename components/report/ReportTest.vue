@@ -19,7 +19,7 @@
           </div>
         </div>
       </div>
-      <div v-if="item.type_test === 'automatic'">
+      <!-- <div v-if="item.type_test === 'automatic'">
         <div class="flex gap-2 font-montserrat py-4 items-center justify-center hover:cursor-pointer" @click="projectDetails(item.id)">
           <img src="../assets/API.svg" />
           <h1 class="font-bold">{{ item.name }}</h1>
@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-      <hr class="pb-3 border-gray-200" />
+      <hr class="pb-3 border-gray-200" /> -->
     </div>
   </div>
 </template>

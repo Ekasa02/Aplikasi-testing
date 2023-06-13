@@ -53,7 +53,7 @@
             </div>
         </div>
         <EditTest v-if="isEditVisible" :item-id="itemId" :project-id="projectId" @closeModal="closeModal" />
-        <DeleteTest v-if="isDeleteVisible" :item-id="itemId" @closeDelete="closeDelete" />
+        <DeleteTest v-if="isDeleteVisible" :item-id="itemId" :scenario-id="versionId" @closeDelete="closeDelete" />
     </div>
 </template>
   
@@ -83,6 +83,7 @@ export default {
             projectId: '',
             member: '',
             scenarioId: '',
+            versionId: '',
             scenario: '',
             isEditVisible: false,
             isDeleteVisible: false,
@@ -104,6 +105,7 @@ export default {
                 this.itemId = response.data.id
                 this.projectId = response.data.project_id
                 this.scenarioId = response.data.scenario_id
+                this.versionId= response.data.version_id
             } catch (e) {
                 console.log(e);
             }

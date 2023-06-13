@@ -30,6 +30,10 @@ export default {
             type: Number,
             required: true,
         },
+        scenarioId: {
+            type: Number,
+            required: true,
+        }
     },
     mounted(){
         // this.deleteItem()
@@ -42,8 +46,7 @@ export default {
             try {
                 const response = await this.$axios.delete(`/test_cases/${this.itemId}`);
                 console.log(response);
-                // window.location.reload();
-                // Additional logic or actions after deleting the item
+                this.$router.push(`/testcase/${this.scenarioId}`);
             } catch (error) {
                 console.log(error);
             }

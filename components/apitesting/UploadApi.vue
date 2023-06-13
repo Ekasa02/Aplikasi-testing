@@ -52,7 +52,7 @@ export default {
 
                 const response = await this.$axios.$post('/automatic', formData);
                 console.log(response);
-                // window.location.reload();
+                window.location.reload();
             } catch (error) {
                 console.log(error);
             }
