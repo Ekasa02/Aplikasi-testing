@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-[#33333385] fixed top-0 left-0 right-0 bottom-0 flex items-center sm:justify-center"
+    class="bg-[#33333385] font-montserrat fixed top-0 left-0 right-0 bottom-0 flex items-center sm:justify-center"
   >
     <div class="bg-white p-8 rounded-lg shadow-lg">
       <div class="flex">
@@ -16,7 +16,7 @@
       <hr class="border-gray-300 my-4 w-full" />
       <form @submit.prevent="postProject">
         <label
-          class="block font-['Montserrat'] font-bold text-[14px] mb-2"
+          class="block  font-bold text-[14px] mb-2"
           for="project-name"
         >
           Project Name

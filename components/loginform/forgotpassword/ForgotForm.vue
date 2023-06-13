@@ -1,6 +1,6 @@
 <template>
     <div class="mt-[30px]">
-        <form class="max-w-md mx-auto">
+        <form class="max-w-md mx-auto" @submit.prevent="forgotPass">
             <div class="relative mb-4">
                 <input id="email" v-model="email" type="email" class="block px-12 py-2 w-full text-gray-900 bg-transparent rounded-lg border border-solid border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
                 <label for="email" class="absolute text-[#4D4D4D] font-medium duration-300 transform -translate-y-4 scale-75 top-2 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:-top-1 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:scale-75 peer-focus:-translate-y-2 left-10">Email</label>
@@ -21,7 +21,22 @@ export default {
         return {
             email: '',
         }
-    }
+    },
+    methods:{
+        async forgotPass(){
+            try{
+                await this.$axios.$post('/password/forgot',{
+                    email: this.email,
+
+                });
+                this.$router.push('/changepass')
+
+            }
+            catch (error){
+                console.error(error);
+            }
+        }
+    },
 }
 </script>
 

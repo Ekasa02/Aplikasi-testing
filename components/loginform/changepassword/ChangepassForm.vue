@@ -1,6 +1,6 @@
 <template>
   <div class="mt-[40px]">
-    <form class="max-w-md">
+    <form class="max-w-md" @submit.prevent="changePW">
       <div class="mb-4 relative">
         <input
           id="password"
@@ -101,12 +101,28 @@ export default {
       return this.confirmPassword !== this.password
     },
   },
+  // mounted(){
+  //   this.changePW();
+  // },
   methods: {
     validatePassword() {
+      console.log(this.$route.query.k)
       if (this.password.length < 8) {
         this.isInvalidPassword = true
       } else {
         this.isInvalidPassword = false
+      }
+    },
+    async changePW() {
+      try {
+        await this.$axios.$post('/password/reset', {
+          password: '12345678',
+          password_confirmation:'12345678',
+        })
+        console.log(this.$route.query.k)
+        this.$router.push('/changepass')
+      } catch (error) {
+        console.error(error)
       }
     },
   },
