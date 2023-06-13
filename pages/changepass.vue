@@ -25,7 +25,8 @@ export default {
     LogibugLogo,
     ChangepassTitle,
     ChangepassForm,
-  }
+  },
+  auth:false,
 }
 </script>
   
