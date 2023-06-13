@@ -1,3 +1,4 @@
+
 <template>
   <div class="mt-[40px]">
     <form class="max-w-md" @submit.prevent="changePW">
@@ -101,14 +102,11 @@ export default {
       return this.confirmPassword !== this.password
     },
   },
-  auth:false,
-
   // mounted(){
   //   this.changePW();
   // },
   methods: {
     validatePassword() {
-      console.log(this.$route.query.k)
       if (this.password.length < 8) {
         this.isInvalidPassword = true
       } else {
@@ -117,12 +115,13 @@ export default {
     },
     async changePW() {
       try {
-        await this.$axios.$post('/password/reset', {
-          password: '12345678',
-          password_confirmation:'12345678',
+		  const token = this.$route.query.k
+        const res = await this.$axios.$post(`/password/reset?token=${token}`, {
+          password: this.password,
+          password_confirmation: this.confirmPassword,
         })
-        console.log(this.$route.query.k)
-        this.$router.push('/changepass')
+		  console.log(res)// tinggal ditambah message dan harusnya otomatis lari ke login 
+		this.$router.push('/login')
       } catch (error) {
         console.error(error)
       }
