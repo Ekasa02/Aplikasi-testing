@@ -39,10 +39,8 @@ export default {
         },
         async deleteItem() {
             try {
-                const response = await this.$axios.delete(`/projects/${this.item}`);
-                console.log(response);
+                await this.$axios.delete(`/projects/${this.item}`);
                 window.location.reload();
-                // Additional logic or actions after deleting the item
             } catch (error) {
                 console.log(error);
             }

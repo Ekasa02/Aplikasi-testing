@@ -12,7 +12,10 @@
       <DashboardProject />
       <div class="flex justify-between" style="margin-top: 15px">
         <DashboardSearchproject />
-        <!-- <DashboardCreateproject @showPopup="showPopup" /> -->
+        <button class="bg-[#554AF0] hover:bg-blue-600 text-white font-bold md:py-[8.5px] py-2 px-2 md:px-8 rounded-[8px]"
+          @click="showPopup">
+          Create Project
+        </button>
       </div>
     </div>
     <div style="padding: 20px 100px">
@@ -23,7 +26,11 @@
 </template>
 
 <script>
+import DashboardNewproject from '~/components/dashboard/DashboardNewproject.vue'
 export default {
+  components: {
+    DashboardNewproject
+},
   layout: 'SidebarLayout',
   data() {
     return {

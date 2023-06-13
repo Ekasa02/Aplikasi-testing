@@ -15,8 +15,9 @@
               <div class="pt-[15px] relative">
                 <label class="block font-montserrat font-bold text-[14px] mb-2" for="Actually">Actually</label>
                 <input v-model="editedActual" id="Actually"
-                  class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  :class="['appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', { 'border-red-500': isActualEmpty }]"
                   type="text" placeholder="Actually" />
+                <label v-if="isActualEmpty" class="text-red-500 text-sm mt-1">This field is required</label>
               </div>
               <div class="pt-[15px] relative">
                 <label class="block font-montserrat font-bold text-[14px] mb-2" for="note">Note</label>
@@ -28,33 +29,37 @@
                 <label class="block font-montserrat font-bold text-[14px] mb-2" for="project-name">Result
                   state</label>
                 <select id="project-name" v-model="editedStatus" required
-                  class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                  class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  :class="{ 'border-red-500': isStatusEmpty }">
                   <option value="" disabled selected>Result state</option>
                   <option value="pass">Pass</option>
                   <option value="fail">Fail</option>
                 </select>
+                <label v-if="isStatusEmpty" class="text-red-500 text-sm mt-1">This field is required</label>
               </div>
               <div class="pt-[15px] relative">
                 <select id="project-name" v-model="editedPriority" required
                   class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  :disabled="editedStatus === 'pass'">
+                  :class="{ 'border-red-500': isPriorityEmpty }" :disabled="editedStatus === 'pass'">
                   <option value="" disabled selected>Priority</option>
                   <option value="urgent">Urgent</option>
                   <option value="high">High</option>
                   <option value="medium">Medium</option>
                   <option value="low">Low</option>
                 </select>
+                <label v-if="isPriorityEmpty" class="text-red-500 text-sm mt-1">This field is required</label>
               </div>
               <div class="pt-[15px] relative">
                 <select id="project-name" v-model="editedSeverity" required
                   class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  :disabled="editedStatus === 'pass'">
+                  :class="{ 'border-red-500': isSeverityEmpty }" :disabled="editedStatus === 'pass'">
                   <option value="" disabled selected>Severity</option>
                   <option value="critical">Critical</option>
                   <option value="major">Major</option>
                   <option value="minor">Minor</option>
                   <option value="low">Low</option>
                 </select>
+                <label v-if="isSeverityEmpty" class="text-red-500 text-sm mt-1">This field is required</label>
               </div>
               <div class="pt-[15px] font-montserrat">
                 <h1 class="block font-bold text-[14px] mb-2">Attachment</h1>
@@ -84,7 +89,7 @@
 export default {
   props: {
     items: {
-      type: Array,
+      type: Object,
       required: true
     }
   },
@@ -94,7 +99,12 @@ export default {
       editedNote: '',
       editedStatus: '',
       editedPriority: '',
-      editedSeverity: ''
+      editedSeverity: '',
+      editedFile: '', // Updated to use null as initial value
+      isActualEmpty: false,
+      isStatusEmpty: false,
+      isPriorityEmpty: false,
+      isSeverityEmpty: false
     };
   },
   mounted() {
@@ -104,21 +114,155 @@ export default {
     this.editedStatus = item.status;
     this.editedPriority = item.priority;
     this.editedSeverity = item.severity;
+    this.editedFile = item.img_url;
   },
   methods: {
     handleFile(e) {
-      // Handle file upload
+      this.editedFile = e.target.files[0]; // Store the selected file
     },
     async updateResult() {
-      try {
-        const updatedItem = {
-          id: this.items.id,
-        };
-        const response = await this.$axios.$put(`/results/${updatedItem.id}`, updatedItem);
-        console.log(response);
-        // window.location.reload(); // Force refresh the page
-      } catch (error) {
-        console.log(error);
+      let isValid = true;
+
+      // Validate the form fields
+      if (!this.editedActual) {
+        this.isActualEmpty = true;
+        isValid = false;
+      } else {
+        this.isActualEmpty = false;
+      }
+
+      if (!this.editedStatus) {
+        this.isStatusEmpty = true;
+        isValid = false;
+      } else {
+        this.isStatusEmpty = false;
+      }
+
+      if (this.editedStatus !== 'pass' && !this.editedPriority) {
+        this.isPriorityEmpty = true;
+        isValid = false;
+      } else {
+        this.isPriorityEmpty = false;
+      }
+
+      if (this.editedStatus !== 'pass' && !this.editedSeverity) {
+        this.isSeverityEmpty = true;
+        isValid = false;
+      } else {
+        this.isSeverityEmpty = false;
+      }
+
+      if (isValid) {
+        try {
+          const updatedItem = {
+            id: this.items.id,
+            actual: this.editedActual,
+            note: this.editedNote,
+            status: this.editedStatus,
+            priority: this.editedPriority,
+            severity: this.editedSeverity,
+            test_case_id: this.items.test_case_id,
+            img_url: this.editedFile
+          };
+
+          const response = await this.$axios.$put(`/results/${updatedItem.id}`, updatedItem);
+          console.log(response);
+          window.location.reload(); // Force refresh the page
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    },
+    hideEdit() {
+      this.$emit("hideEdit");
+    }
+  }
+};
+</script>export default {
+  props: {
+    items: {
+      type: Object,
+      required: true
+    }
+  },
+  data() {
+    return {
+      editedActual: '',
+      editedNote: '',
+      editedStatus: '',
+      editedPriority: '',
+      editedSeverity: '',
+      editedFile: '',
+      isActualEmpty: false,
+      isStatusEmpty: false,
+      isPriorityEmpty: false,
+      isSeverityEmpty: false
+    };
+  },
+  mounted() {
+    const item = this.items;
+    this.editedActual = item.actual;
+    this.editedNote = item.note;
+    this.editedStatus = item.status;
+    this.editedPriority = item.priority;
+    this.editedSeverity = item.severity;
+    this.editedFile = item.img_url;
+  },
+  methods: {
+    handleFile(e) {
+      this.editedFile = e.target.files[0]
+    },
+    async updateResult() {
+      let isValid = true;
+
+      // Validate the form fields
+      if (!this.editedActual) {
+        this.isActualEmpty = true;
+        isValid = false;
+      } else {
+        this.isActualEmpty = false;
+      }
+
+      if (!this.editedStatus) {
+        this.isStatusEmpty = true;
+        isValid = false;
+      } else {
+        this.isStatusEmpty = false;
+      }
+
+      if (this.editedStatus !== 'pass' && !this.editedPriority) {
+        this.isPriorityEmpty = true;
+        isValid = false;
+      } else {
+        this.isPriorityEmpty = false;
+      }
+
+      if (this.editedStatus !== 'pass' && !this.editedSeverity) {
+        this.isSeverityEmpty = true;
+        isValid = false;
+      } else {
+        this.isSeverityEmpty = false;
+      }
+
+      if (isValid) {
+        try {
+          const updatedItem = {
+            id: this.items.id,
+            actual: this.editedActual,
+            note: this.editedNote,
+            status: this.editedStatus,
+            priority: this.editedPriority,
+            severity: this.editedSeverity,
+            test_case_id: this.items.test_case_id,
+            img_url: this.editedFile
+          };
+
+          const response = await this.$axios.$put(`/results/${updatedItem.id}`, updatedItem);
+          console.log(response);
+          // window.location.reload(); // Force refresh the page
+        } catch (error) {
+          console.log(error);
+        }
       }
     },
     hideEdit() {

@@ -7,7 +7,7 @@
             </div>
             <hr class="border-gray-300 my-4 w-full">
             <div class="overflow-y-auto max-h-[60vh] pr-5">
-                <form @submit.prevent="postProject">
+                <form @submit.prevent="createTestCase">
                     <div class="relative">
                         <label class="block font-['Montserrat'] font-bold text-[14px] mb-2" for="testcase">
                             Test case
@@ -74,7 +74,7 @@
                             type="text" placeholder="Expectation" v-model="newItem.expectation">
                     </div>
                     <div class="pt-[50px]">
-                        <button class="font-['Montserrat'] bg-[#554AF0] text-white font-bold py-2 px-4 rounded"
+                        <button class="font-['Montserrat'] bg-[#554AF0] text-white font-bold py-2 px-4 rounded" 
                             type="submit">
                             Create
                         </button>
@@ -139,7 +139,12 @@ export default {
                 console.log(e);
             }
         },
-        async postProject() {
+        async createTestCase() {
+            if (!this.newItem.scenario_id || !this.newItem.testcase || !this.newItem.test_category || !this.newItem.pre_condition || !this.newItem.test_step || !this.newItem.expectation) {
+                // Check if any of the required fields are empty
+                console.log('Please fill in all the required fields.');
+                return;
+            }
             this.newItem.version_id = this.id;
             try {
                 const response = await this.$axios.$post('/test_cases', this.newItem);
