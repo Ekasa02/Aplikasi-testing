@@ -42,7 +42,7 @@
         />
         <label
           for="password"
-          class=" absolute text-[#4D4D4D] font-medium duration-300 transform -translate-y-4 scale-75 top-2 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:-top-1 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:scale-75 peer-focus:-translate-y-2 left-10"
+          class="absolute text-[#4D4D4D] font-medium duration-300 transform -translate-y-4 scale-75 top-2 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:-top-1 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:scale-75 peer-focus:-translate-y-2 left-10"
         >
           Password
         </label>
@@ -68,10 +68,10 @@
         <p v-if="invalidLogin" class="text-red-500 text-sm mt-1">
           The password you entered is incorrect
         </p>
-    </div>
-    <nuxtLink to="/forgotpass"
-      ><p class="text-[#554AF0]">Forgot Password?</p></nuxtLink
-    >
+      </div>
+      <nuxt-link to="/forgotpass" >
+        <span class="text-[#554AF0]">Forgot Password?</span>
+      </nuxt-link>
       <div class="mb-6 pt-4">
         <button
           class="w-full py-[10px] bg-[#554AF0] text-white rounded-[8px] text-md hover:bg-blue-600"
