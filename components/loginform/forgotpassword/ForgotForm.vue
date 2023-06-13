@@ -22,6 +22,7 @@ export default {
             email: '',
         }
     },
+    auth:false,
     methods:{
         async forgotPass(){
             try{

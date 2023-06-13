@@ -101,6 +101,8 @@ export default {
       return this.confirmPassword !== this.password
     },
   },
+  auth:false,
+
   // mounted(){
   //   this.changePW();
   // },
