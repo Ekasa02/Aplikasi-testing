@@ -1,7 +1,7 @@
 <template>
   <div class="max-h-[70vh] overflow-y-auto">
     <ul class="list-group h-full mt-[40px]">
-      <li class="list-group-item" v-for="item in items " :key="item.id" @click="toDetailTest(item.id)">
+      <li class="list-group-item" v-for="item in DataFiltered " :key="item.id" @click="toDetailTest(item.id)">
         <div class="border-b border-gray-200 pb-[10px] flex gap-x-5 mb-[10px] cursor-pointer">
           <div class="w-3 h-[70px] rounded-xl" :class="getCategoryColor(item.test_category)"></div>
           <div>
@@ -94,6 +94,16 @@ export default {
         }
         return this.scenarioMap[scenarioId] || ''; // Return scenario name from the map or empty string
       };
+    },
+    DataFiltered(){
+      if(this.filter.length > 0) {
+        const arrayFilter = this.filter.map((e)=> e.name) 
+      return this.items.filter((obj)=> {
+          return arrayFilter.includes(obj.scenario_name)
+      });
+      } else {
+        return this.items
+      }
     },
     filteredItems() {
       return this.items.filter(item => this.filter.some(filterItem => filterItem.id === item.scenario_id));
