@@ -29,7 +29,9 @@ export default {
     openProfile() {
       this.$emit('openProfile');
     },
-    
+    closeProfile() {
+      this.$emit('closeProfile');
+    }
   },
 }
 </script>

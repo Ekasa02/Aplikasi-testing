@@ -6,8 +6,8 @@
     </div>
     <div class="px-5">
       <p class="pt-2 pr-5">
-        50 Issue telah di uji. selesaikan 150 issue lagi untuk <br />mencapai
-        tingkat menengah
+        {{ userRank.testcase_count }} issues has been fixed. Fix {{ userRank.rank.range_difference }} more issues <br /> 
+        to advance.
       </p>
     </div>
     <hr class="border-gray-300 my-4 w-full" />
@@ -29,10 +29,10 @@
       <hr class="border-gray-300 my-4 w-full" />
       <div class="flex text-[16px] pb-5 px-5">
         <img src="../assets/Logout.svg" />
-        <button @click="showLogout" class="pl-3">Log Out</button>
+        <button class="pl-3" @click="showLogout">Log Out</button>
       </div>
     </div>
-    <PopupLog v-if="isPopupLogout" @showLogout="showLogout" />
+    <PopupLog v-if="isPopupLogout" @showLogout="showLogout" @closeLogout="closeLogout" />
   </div>
 </template>
 
@@ -43,12 +43,38 @@ export default {
   data() {
     return {
       isPopupLogout: false,
+      profileId: null,
+      userRank: {}
     }
+  },
+  mounted(){
+    this.getProfileid()
   },
   methods: {
     showLogout() {
       this.isPopupLogout = true;
-    }
+    },
+    closeLogout(){
+      this.isPopupLogout = false;
+    },
+    async getProfileid() {
+      try {
+        const response = await this.$axios.$get('/profiles')
+        this.profileId = response.data.id
+        await this.getAchievements()
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async getAchievements() {
+      try {
+        const response = await this.$axios.$get(`achieve/?id=${this.profileId}`)
+        this.userRank = response
+        console.log(this.userRank.rank.range_difference)
+      } catch (e) {
+        console.log(e)
+      }
+    },
   }
 }
 </script>
