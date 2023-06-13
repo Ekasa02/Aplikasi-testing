@@ -2,9 +2,8 @@
   <div>
     <div class="max-h-[43vh] overflow-y-auto">
       <ul class="list-group h-full py-4">
-        <li v-for="item in items" :key="item.id" class="list-group-item mb-2">
-          <div
-            class="flex w-full justify-between border-b border-solid py-2 hover:cursor-pointer"
+        <li v-for="item in filteredItems" :key="item.id" class="list-group-item mb-2">
+          <div class="flex w-full justify-between border-b border-solid py-2 hover:cursor-pointer"
             @click="navigateToVersion(item)">
             <div class="flex items-center">
               <div class="py-2">
@@ -15,12 +14,12 @@
                   <span class="text-gray-700 font-semibold text-sm">{{ item.name }}</span>
                 </h5>
                 <div class="flex gap-x-4 gap-y-2items-center">
-                  <div v-if="item.platform === 'mobile'" class="text-gray-300">
+                  <div v-if="item.platform === 'mobile' && item.type_test === 'manual'" class="text-gray-300">
                     <div>
                       <img src="./svg/Mobile.svg" alt="List Icon" class="h-full">
                     </div>
                   </div>
-                  <div v-if="item.platform === 'web'" class="text-gray-300">
+                  <div v-if="item.platform === 'web' && item.type_test === 'manual'" class="text-gray-300">
                     <div>
                       <img src="./svg/Web.svg" alt="List Icon" class="h-full">
                     </div>
@@ -58,13 +57,16 @@
 <script>
 import PopupEdit from '../projectedit/editproject/PopupEdit.vue';
 import DashboardDelete from './DashboardDelete.vue';
-
 export default {
   components: { PopupEdit, DashboardDelete },
   props: {
     items: {
       type: Array,
       default: () => []
+    },
+    searchValue: {
+      type: String,
+      required: true
     }
   },
   data() {
@@ -74,6 +76,17 @@ export default {
       isPopupDelete: false,
       deleteItemId: null,
     };
+  },
+  computed: {
+    filteredItems() {
+      if (this.searchValue !== '') {
+        return this.items.filter(item =>
+          item.name.toLowerCase().includes(this.searchValue.toLowerCase())
+        );
+      } else {
+        return this.items;
+      }
+    }
   },
   methods: {
     navigateToVersion(item) {

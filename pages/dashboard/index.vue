@@ -8,10 +8,10 @@
     <div class="px-[100px]">
       <DashboardPopup v-if="isProfileVisible" />
       <DashboardTitle />
-      <DashboardLevel level="Beginner" />
+      <DashboardLevel :level="userRank" />
       <DashboardProject />
       <div class="flex justify-between" style="margin-top: 15px">
-        <DashboardSearchproject />
+        <DashboardSearchproject @search-input="handleSearch" />
         <button class="bg-[#554AF0] hover:bg-blue-600 text-white font-bold md:py-[8.5px] py-2 px-2 md:px-8 rounded-[8px]"
           @click="showPopup">
           Create Project
@@ -19,7 +19,7 @@
       </div>
     </div>
     <div style="padding: 20px 100px">
-      <DashboardTable :items="items" @createVersion="navigateTo" />
+      <DashboardTable :items="items" :search-value="searchValue" @createVersion="navigateTo" />
     </div>
     <DashboardNewproject v-if="isPopupVisible" @closePopup="closePopup" />
   </div>
@@ -30,19 +30,29 @@ import DashboardNewproject from '~/components/dashboard/DashboardNewproject.vue'
 export default {
   components: {
     DashboardNewproject
-},
+  },
   layout: 'SidebarLayout',
   data() {
     return {
       isPopupVisible: false,
       isProfileVisible: false,
+      searchValue: '',
       items: [],
+      profileId: '',
+      userRank: ''
     }
   },
   mounted() {
     this.getProject()
+    this.getProfileid()
+    setTimeout(() => {
+      this.getAchievements()
+    }, 1000);
   },
   methods: {
+    handleSearch(value) {
+      this.searchValue = value
+    },
     navigateTo(path) {
       this.$router.push(path)
     },
@@ -56,19 +66,31 @@ export default {
       this.isProfileVisible = !this.isProfileVisible
     },
     createProject(project) {
-      // console.log('run', project)
-      // console.log(project))
-
       project.id = this.items.length + 1
       this.items.push(project)
     },
     async getProject() {
       try {
         const response = await this.$axios.$get('/projects')
-        // console.log(response)
         this.items = response.data
       } catch (e) {
-        // console.log(e)
+        console.log(e)
+      }
+    },
+    async getProfileid() {
+      try {
+        const response = await this.$axios.$get('/profiles')
+        this.profileId = response.data.id
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async getAchievements() {
+      try {
+        const response = await this.$axios.$get(`achieve/?id=${this.profileId}`)
+        this.userRank = response.rank.name
+      } catch (e) {
+        console.log(e)
       }
     },
   },

@@ -127,8 +127,7 @@ export default {
         formData.append('severity', this.form.severity)
         formData.append('img_url', this.form.img_url)
         formData.append('user_id', this.userId)
-        const response = await this.$axios.$post('/results', formData)
-        console.log(response)
+        await this.$axios.$post('/results', formData)
         window.location.reload()
       } catch (error) {
         console.log(error)

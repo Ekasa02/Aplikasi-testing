@@ -100,99 +100,7 @@ export default {
       editedStatus: '',
       editedPriority: '',
       editedSeverity: '',
-      editedFile: '', // Updated to use null as initial value
-      isActualEmpty: false,
-      isStatusEmpty: false,
-      isPriorityEmpty: false,
-      isSeverityEmpty: false
-    };
-  },
-  mounted() {
-    const item = this.items;
-    this.editedActual = item.actual;
-    this.editedNote = item.note;
-    this.editedStatus = item.status;
-    this.editedPriority = item.priority;
-    this.editedSeverity = item.severity;
-    this.editedFile = item.img_url;
-  },
-  methods: {
-    handleFile(e) {
-      this.editedFile = e.target.files[0]; // Store the selected file
-    },
-    async updateResult() {
-      let isValid = true;
-
-      // Validate the form fields
-      if (!this.editedActual) {
-        this.isActualEmpty = true;
-        isValid = false;
-      } else {
-        this.isActualEmpty = false;
-      }
-
-      if (!this.editedStatus) {
-        this.isStatusEmpty = true;
-        isValid = false;
-      } else {
-        this.isStatusEmpty = false;
-      }
-
-      if (this.editedStatus !== 'pass' && !this.editedPriority) {
-        this.isPriorityEmpty = true;
-        isValid = false;
-      } else {
-        this.isPriorityEmpty = false;
-      }
-
-      if (this.editedStatus !== 'pass' && !this.editedSeverity) {
-        this.isSeverityEmpty = true;
-        isValid = false;
-      } else {
-        this.isSeverityEmpty = false;
-      }
-
-      if (isValid) {
-        try {
-          const updatedItem = {
-            id: this.items.id,
-            actual: this.editedActual,
-            note: this.editedNote,
-            status: this.editedStatus,
-            priority: this.editedPriority,
-            severity: this.editedSeverity,
-            test_case_id: this.items.test_case_id,
-            img_url: this.editedFile
-          };
-
-          const response = await this.$axios.$put(`/results/${updatedItem.id}`, updatedItem);
-          console.log(response);
-          // window.location.reload(); // Force refresh the page
-        } catch (error) {
-          console.log(error);
-        }
-      }
-    },
-    hideEdit() {
-      this.$emit("hideEdit");
-    }
-  }
-};
-</script>export default {
-  props: {
-    items: {
-      type: Object,
-      required: true
-    }
-  },
-  data() {
-    return {
-      editedActual: '',
-      editedNote: '',
-      editedStatus: '',
-      editedPriority: '',
-      editedSeverity: '',
-      editedFile: '',
+      editedFile: '', 
       isActualEmpty: false,
       isStatusEmpty: false,
       isPriorityEmpty: false,
@@ -215,7 +123,6 @@ export default {
     async updateResult() {
       let isValid = true;
 
-      // Validate the form fields
       if (!this.editedActual) {
         this.isActualEmpty = true;
         isValid = false;
@@ -259,7 +166,7 @@ export default {
 
           const response = await this.$axios.$put(`/results/${updatedItem.id}`, updatedItem);
           console.log(response);
-          // window.location.reload(); // Force refresh the page
+          window.location.reload();
         } catch (error) {
           console.log(error);
         }

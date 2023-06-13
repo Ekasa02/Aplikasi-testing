@@ -5,16 +5,20 @@
         </div>
         <input
             class="w-[160px] md:w-[320px] pl-10 pr-4 py-2 bg-white border-[0.5px] border-gray-300 placeholder-gray-600 text-base rounded-xl focus:outline-none focus:bg-white focus:shadow"
-            type="text" placeholder="Search Project" />
+            type="text" placeholder="Search Project" @input="handleInput" />
     </div>
 </template>
   
 <script>
 export default {
-
+    methods: {
+        handleInput(event) {
+            const inputValue = event.target.value;
+            this.$emit('search-input', inputValue);
+        }
+    }
 }
 </script>
   
 <style lang="scss" scoped></style>
   
-
