@@ -1,6 +1,8 @@
 <template>
     <div class="font-montserrat">
-        <TestingHeader />
+        <TestingHeader @showProfile="showProfile"/>
+        <DashboardPopup v-if="isProfileVisible" />
+
         <div class="py-[50px] px-[100px]" v-if="!responseTrue">
             <h1 class="font-bold text-2xl">{{ version }}</h1>
             <div class="mt-[80px]">
@@ -12,12 +14,13 @@
 </template>
   
 <script>
+import DashboardPopup from '../../components/dashboard/DashboardPopup.vue';
 import ProjectsResponse from '~/components/apitesting/ProjectsResponse.vue';
 import TestingHeader from '~/components/apitesting/TestingHeader.vue';
 import UploadApi from '~/components/apitesting/UploadApi.vue';
 
 export default {
-    components: { UploadApi, TestingHeader, ProjectsResponse },
+    components: { UploadApi, TestingHeader, ProjectsResponse,DashboardPopup },
     layout: 'SidebarLayout',
     data() {
         return {
@@ -25,6 +28,8 @@ export default {
             version: '',
             items: [],
             responseTrue: false,
+            isProfileVisible: false,
+
         };
     },
     mounted() {
@@ -50,6 +55,9 @@ export default {
             } catch (e) {
                 console.log(e);
             }
+        },
+        showProfile() {
+            this.isProfileVisible = !this.isProfileVisible;
         },
     },
 };
