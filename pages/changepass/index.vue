@@ -8,17 +8,15 @@
       </div>
     </div>
     <div class="hidden md:block w-3/5 bg-blue-500">
-      <img src="../components/assets/FrameForm.svg" alt="Image" class="object-cover w-full h-full">
-
+      <img src="../../components/assets/FrameForm.svg" alt="Image" class="object-cover w-full h-full">
     </div>
   </div>
 </template>
   
 <script>
-
-import ChangepassTitle from '../components/loginform/changepassword/ChangepassTitle.vue';
-import ChangepassForm from '../components/loginform/changepassword/ChangepassForm.vue';
-import LogibugLogo from '../components/major/LogibugLogo.vue';
+import ChangepassTitle from '~/components/loginform/changepassword/ChangepassTitle.vue';
+import ChangepassForm from '~/components/loginform/changepassword/ChangepassForm.vue';
+import LogibugLogo from '~/components/major/LogibugLogo.vue';
 
 export default {
   components: {

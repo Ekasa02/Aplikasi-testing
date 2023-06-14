@@ -36,7 +36,8 @@
               <div class="font-montserrat pb-14">
                 <h1 class="pt-8 font-semibold text-[16px] leading-6">Member</h1>
                 <button class="float-right text-[#554AF0]" @click="infoMember">See all</button>
-                <img :src="items.img_url" class="w-[60px] h-[60px] pt-3 rounded-full" alt="Profile picture" />
+                <img v-if="items.img_url" :src="items.img_url" class="w-[60px] h-[60px] pt-3 rounded-full" alt="Profile picture" />
+                <img v-if="!items.img_url" src="../../assets/Profil.svg" class="w-[60px] h-[60px] pt-3 rounded-full" alt="Profile Picture"></img>
               </div>
             </div>
           </form>

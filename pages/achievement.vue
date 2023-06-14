@@ -3,7 +3,7 @@
         <SettingProfile @showProfile="showProfile"/>
         <div class=" bg-[#FBFBFC] md:px-4  md:py-3 ">
             <DashboardPopup v-if="isProfileVisible" />
-            <div class="rounded-[20px] bg-[#C2CFFB] border border-solid border-[#EFEFF0]  px-[10px] md:px-[30px] items-center justify-center">
+            <div class="rounded-[20px] bg-[#C2CFFB] border border-solid border-[#EFEFF0] py-[30px] px-[10px] md:px-[30px] items-center justify-center">
                 <ProfilTestcase/>
                 <LevelDesc/>
                 <RateClass/>

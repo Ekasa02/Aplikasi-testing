@@ -121,7 +121,7 @@ export default {
         console.error(error);
         // Handle error, such as displaying an error message to the user
       }
-    }
+    },
   },
 };
 </script>

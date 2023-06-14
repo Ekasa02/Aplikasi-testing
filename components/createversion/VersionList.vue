@@ -11,7 +11,7 @@
                         <button @click="deletePopup(item.id); $event.stopPropagation()">
                             <img src="./svg/Delete.svg" alt="List Icon" class="h-5 w-5">
                         </button>
-                        <button @click="copyItemsToVersion(item); $event.stopPropagation()">
+                        <button @click="copyItemsToVersion(item.id); $event.stopPropagation()">
                             <img src="./svg/Copy.svg" alt="List Icon" class="h-5 w-5"/>
                         </button>
                         <button @click="editPopup(item); $event.stopPropagation()">
@@ -74,11 +74,7 @@ export default {
         },
         async copyItemsToVersion(item) {
             try {
-                const payload = {
-                    name: item.name,
-                    project_id: item.project_id,
-                };
-                const response = await this.$axios.$post('/versions', payload);
+                const response = await this.$axios.$post(`/versions/clone/${item}`);
                 console.log(response);
                 window.location.reload();
             } catch (error) {
