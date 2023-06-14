@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="max-h-[43vh] overflow-y-auto">
+    <div class="max-h-[43vh] overflow-y-auto overflow-x-auto">
       <ul class="list-group h-full py-4">
         <li v-for="item in filteredItems" :key="item.id" class="list-group-item mb-2">
           <div class="flex w-full justify-between border-b border-solid py-2 hover:cursor-pointer"
@@ -34,7 +34,7 @@
                 </div>
               </div>
             </div>
-            <div class="flex items-center gap-x-4 mr-5">
+            <div class="flex items-center gap-x-2 md:gap-x-4 md:mr-5 mr-2">
               <button @click="deleteProject(item.id); $event.stopPropagation()">
                 <img src="./svg/Delete.svg" alt="List Icon" class="h-[20px] w-[20px]">
               </button>

@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-[40px]">
+    <div class="mt-[10px] md:mt-[40px]">
         <h1 class="text-[#1a1a1a] text-xl md:text-4xl font-normal md:font-medium">Hello, {{ user.name }} <span class="font-bold">{{ userName }}</span></h1>
     </div>
 </template>

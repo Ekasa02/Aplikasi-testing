@@ -2,7 +2,7 @@
     <div>
         <VersionHeader @showProfile="showProfile" />
         <DashboardPopup v-if="isProfileVisible" />
-        <div class="px-[100px] py-[50px]">
+        <div class="px-2 md:px-[100px] md:py-[50px]">
             <div class="flex justify-between">
                 <VersionName :project-name=projects.name :platform=projects.platform type-test="Automatic" />
                 <div class="flex gap-x-4">

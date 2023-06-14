@@ -11,3 +11,14 @@
         </div>
     </div>
 </template>
+
+<script>
+export default{
+    methods:{
+        emailSend(){
+            this.$emit('showPopup')
+        }
+    }
+}
+
+</script>

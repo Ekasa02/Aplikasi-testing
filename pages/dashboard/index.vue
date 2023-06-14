@@ -1,11 +1,11 @@
 <template>
   <div class="font-montserrat">
-    <div class="flex items-center justify-end py-[14px] pr-[100px] border-b-[1px] border-gray-300">
+    <div class="flex items-center justify-end py-[5px] pr-[10px] md:pr-[100px] border-b-[1px] border-gray-300">
       <div class="ml-auto">
         <DashboardProfile @showProfile="showProfile" />
       </div>
     </div>
-    <div class="px-[100px]">
+    <div class="px-[10px] md:px-[100px]">
       <DashboardPopup v-if="isProfileVisible" />
       <DashboardTitle />
       <DashboardLevel :level="userRank" />
@@ -18,7 +18,7 @@
         </button>
       </div>
     </div>
-    <div style="padding: 20px 100px">
+    <div style="padding: 20px 100px;" class="project md:px-[20px] md:py-[100px]">
       <DashboardTable :items="items" :search-value="searchValue" @createVersion="navigateTo" />
     </div>
     <DashboardNewproject v-if="isPopupVisible" @closePopup="closePopup" />
