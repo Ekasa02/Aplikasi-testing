@@ -5,7 +5,7 @@
   )) -->
     <div class="flex justify-between py-10">
       <h1 class="font-bold py-8 leading-10 text-[32px]">Notification</h1>
-      <h1 class="text-blue-600 float-right">{{ items.length }} Unread</h1>
+      <!-- <h1 class="text-blue-600 float-right">{{ items.length }} Unread</h1> -->
     </div>
     <div v-for="item in items" :key="item.id" class="flex bg-blue-100 py-2">
       <img src="../assets/Profil.svg" class="px-2 w-[80px] h-[80px]" />
