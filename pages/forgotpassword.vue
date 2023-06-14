@@ -9,7 +9,6 @@
     </div>
     <div class="hidden md:block w-3/5 bg-blue-500">
       <img src="../components/assets/FrameForm.svg" alt="Image" class="object-cover w-full h-full">
-
     </div>
   </div>
 </template>
@@ -25,7 +24,8 @@ export default {
     LogibugLogo,
     ForgotTitle,
     ForgotForm
-  }
+  },
+  auth: false
 }
 </script>
   

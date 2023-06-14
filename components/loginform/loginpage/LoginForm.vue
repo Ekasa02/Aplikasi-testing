@@ -35,7 +35,7 @@
           The password you entered is incorrect
         </p>
       </div>
-      <nuxtLink to="/forgotpass">
+      <nuxtLink to="/forgotpassword">
         <p class="text-[#554AF0]">Forgot Password?</p>
       </nuxtLink>
       <div class="mb-6 pt-4">
