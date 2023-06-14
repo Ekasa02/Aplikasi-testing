@@ -17,7 +17,6 @@
                     Send
                 </button>
             </div>
-            <email-forget ></email-forget>
         </form>
         <EmailForget v-if="popupChange" @closePopup="closePopup" />
     </div>
@@ -61,4 +60,3 @@ export default {
 </script>
   
 <style lang="scss" scoped></style>
-  
