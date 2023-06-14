@@ -1,5 +1,5 @@
 <template>
-  <div  id="features" class="bg-[#EDF1FF] py-[70px] px-[60px]">
+  <div id="features" class="bg-[#EDF1FF] py-[70px] px-[60px]">
     <div  class="text-center w-[100%]">
       <h1 class="text-3xl font-bold font-montserrat">LogiBug is equipped with many features that will help streamline your testing process</h1>
     </div>

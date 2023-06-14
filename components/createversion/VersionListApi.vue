@@ -11,7 +11,9 @@
                         <button @click="deletePopup(item.id); $event.stopPropagation()">
                             <img src="./svg/Delete.svg" alt="List Icon" class="h-5 w-5">
                         </button>
-                        <img src="./svg/Copy.svg" alt="List Icon">
+                        <button @click="copyItemsToVersion(item.id); $event.stopPropagation()">
+                            <img src="./svg/Copy.svg" alt="List Icon" class="h-5 w-5"/>
+                        </button>
                         <button @click="editPopup(item); $event.stopPropagation()">
                             <img src="./svg/Edit.svg" alt="List Icon" class="h-5 w-5">
                         </button>
@@ -69,7 +71,16 @@ export default {
         },
         deleteProject() {
             this.isPopupDelete = true
-        }
+        },
+        async copyItemsToVersion(item) {
+            try {
+                const response = await this.$axios.$post(`/versions/clone/${item}`);
+                console.log(response);
+                window.location.reload();
+            } catch (error) {
+                console.error(error);
+            }
+        },
     },
 }
 
