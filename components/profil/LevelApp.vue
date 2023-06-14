@@ -4,12 +4,12 @@
       :class="`mx-5 rounded-[28px] px-6 py-2 w-[120px] flex items-center justify-center mt-3 font-semibold text-sm text-white ${levelClass}`">
       <h1>{{ userRank.rank.name }}</h1>
     </div>
-    <div class="px-5">
+    <!-- <div class="px-5">
       <p class="pt-2 pr-5">
         {{ userRank.testcase_count }} issues has been fixed. Fix {{ userRank.rank.range_difference }} more issues <br />
         to advance.
       </p>
-    </div>
+    </div> -->
     <hr class="border-gray-300 my-4 w-full" />
     <div class="">
       <div class="flex text-[16px] px-5">

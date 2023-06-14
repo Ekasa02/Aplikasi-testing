@@ -134,7 +134,7 @@ export default {
         const response = await this.$axios.$post('/projects', this.newItem)
         console.log(response)
         // Reload the page
-        location.reload()
+        window.location.reload()
       } catch (error) {
         console.log(error)
       }
