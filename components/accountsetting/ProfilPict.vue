@@ -5,8 +5,9 @@
         </div>
         <div class="flex items-center gap-x-12 mt-3">
             <div class="">
-              <img v-if="getPhoto" src="getPhoto" class="w-[110px] h-[110px] rounded-full" alt="Profile Picture">
-              <img v-if="!getPhoto" src="../assets/Profil.svg" class="w-[110px] h-[110px] rounded-full" alt="Profile Picture">
+              <img 
+              src="getPhoto" class="w-[110px] h-[110px] rounded-full" alt="Profile Picture">
+              <!-- <img v-if="!getPhoto" src="../assets/Profil.svg" class="w-[110px] h-[110px] rounded-full" alt="Profile Picture"> -->
             </div>
             <div class="">
                 <p>Maximum photo size is 1 MB</p>
