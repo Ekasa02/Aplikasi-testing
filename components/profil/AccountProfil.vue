@@ -2,7 +2,8 @@
     <div class="bg-white rounded-lg  overflow-hidden">
       <div class="flex flex-row items-center justify-start">
         <div class="w-1/4 mx-5">
-          <img :src="items.img_url" class="w-[80px] h-[80px] rounded-full" alt="Profile picture">
+          <img v-if="items.img_url" :src="items.img_url" class="w-[80px] h-[80px] rounded-full" alt="Profile picture">
+          <img v-if="!items.img_url" src="../assets/Profil.svg" class="w-[80px] h-[80px] rounded-full border-2 border-solid" alt="Profile Picture">
         </div>
         <div class="w-3/4 pl-6 pr-20 ">
           <h2 class="text-xl font-bold">{{items.name}}</h2>

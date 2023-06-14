@@ -1,12 +1,12 @@
 <template>
   <div>
     <div
-      class="mx-5 rounded-[28px] px-6 py-2 w-[120px] flex items-center justify-center mt-3 text-white font-semibold text-sm bg-[linear-gradient(143.07deg, #5883D6 0%, #C2CFFB 98.57%)]">
-      <h1>Beginner</h1>
+      :class="`mx-5 rounded-[28px] px-6 py-2 w-[120px] flex items-center justify-center mt-3 font-semibold text-sm text-white ${levelClass}`">
+      <h1>{{ userRank.rank.name }}</h1>
     </div>
     <div class="px-5">
       <p class="pt-2 pr-5">
-        {{ userRank.testcase_count }} issues has been fixed. Fix {{ userRank.rank.range_difference }} more issues <br /> 
+        {{ userRank.testcase_count }} issues has been fixed. Fix {{ userRank.rank.range_difference }} more issues <br />
         to advance.
       </p>
     </div>
@@ -43,18 +43,40 @@ export default {
   data() {
     return {
       isPopupLogout: false,
-      profileId: null,
-      userRank: {}
+      profileId: '',
+      userRank: {
+        rank: {
+          name: '',
+          range_difference: ''
+        },
+        testcase_count: ''
+      }
     }
   },
-  mounted(){
-    this.getProfileid()
+  computed: {
+    levelClass() {
+      switch (this.userRank.rank.name) {
+        case 'Beginner':
+          return 'bg-[#F37FB7]';
+        case 'Intermediate':
+          return 'bg-[#4DAEFF]';
+        case 'Advanced':
+          return 'bg-[#FCC42E]';
+        case 'Mastery':
+          return 'bg-[#9747FF]';
+        default:
+          return 'bg-[#F37FB7]';
+      }
+    }
+  },
+  mounted() {
+    this.getProfileid();
   },
   methods: {
     showLogout() {
       this.isPopupLogout = true;
     },
-    closeLogout(){
+    closeLogout() {
       this.isPopupLogout = false;
     },
     async getProfileid() {

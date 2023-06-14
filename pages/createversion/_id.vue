@@ -99,7 +99,6 @@ export default {
         await this.getProfile()
         // console.log(response.data[2])
         this.member = response.data.filter(member => member.email === this.user)[0].role;
-        console.log(this.member)
       } catch (e) {
         console.log(e)
       }

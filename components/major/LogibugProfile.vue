@@ -1,7 +1,8 @@
 <template>
     <div  >
       <button class="rounded-full overflow-hidden" @click="showProfile">
-        <img class="w-12 h-12  object-cover" :src="items.img_url" alt="Profile Picture">
+        <img v-if="items.img_url" class="w-12 h-12  object-cover" :src="items.img_url" alt="Profile Picture">
+        <img v-if="!items.img_url" src="../assets/Profil.svg" class="w-12 h-12 rounded-full" alt="Profile Picture">
       </button>
     </div>
 </template>

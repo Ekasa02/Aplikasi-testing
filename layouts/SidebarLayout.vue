@@ -1,7 +1,6 @@
 <template>
     <div class="flex">
-        <div class=" bg-[#F8F8FA] w-[80px] h-screen flex flex-col border-r-[1px] border-gray-300 sidebar-transition hover:w-1/5"
-            @mouseenter="showLabels = true" @mouseleave="showLabels = false">
+        <div class=" bg-[#F8F8FA] w-[80px] h-screen flex flex-col border-r-[1px] border-gray-300">
             <div class="flex-1 flex flex-col justify-start items-center text-[#999999]">
                 <ul class="mt-6 text-lg font-medium sidebar-icons">
                     <li :class="{ 'text-gray-500': $route.path === '/dashboard' }"
