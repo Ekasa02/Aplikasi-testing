@@ -31,10 +31,10 @@
         <div class="bg-white px-5 py-4 rounded">
           <div class="w-full bg-[#CDCBFC] rounded-lg flex items-center h-6 relative">
             <div class="h-6 bg-[#554AF0] rounded-lg"
-              :style="{ width: calculateProgressBarWidth(item.test_case_pass_count, item.test_case_count) }">
+              :style="{ width: calculateProgressBarWidth(item.test_case_pass_count, item.test_case_count, item.test_case_fail_count) }">
             </div>
             <span class="text-white font-medium absolute left-[290px]">
-              {{ isNaN(item.test_case_pass_count / item.test_case_count) ? 0 : Math.round((item.test_case_pass_count /
+              {{ isNaN(item.test_case_pass_count / item.test_case_count) ? 0 : Math.round(((item.test_case_pass_count + item.test_case_fail_count) /
                 item.test_case_count) * 100) }}
             </span>
           </div>
@@ -90,11 +90,11 @@ export default {
         // console.log(e)
       }
     },
-    calculateProgressBarWidth(passCount, totalCount) {
+    calculateProgressBarWidth(passCount, totalCount, failCount) {
       if (totalCount === 0) {
         return '0%';
       }
-      const passRatio = (passCount / totalCount) * 100;
+      const passRatio = ((passCount + failCount) / totalCount) * 100;
       return `${passRatio}%`;
     }
   }
