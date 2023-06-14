@@ -95,6 +95,7 @@ export default {
     },
     displayResult() {
       this.getResult = true
+      this.runGetResultForItems()
     }
   }
 }
