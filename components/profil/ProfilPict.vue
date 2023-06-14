@@ -10,9 +10,8 @@
             </div>
             <div class="pl-16 pt-10">
                 <p>Maximum photo size is 1 MB</p>
-                <button-select @input="updateImage"/>
-                <button 
-                    @click="saveImage"
+                <button-select @input="updateImage" />
+                <button @click="saveImage"
                     class="font-['Montserrat'] text-white bg-[#554AF0] font-semibold py-2 px-5 rounded mt-4">
                     Save Photo
                 </button>
@@ -33,7 +32,11 @@ export default {
         return {
             src: null,
             file: null,
+            string: ''
         };
+    },
+    mounted() {
+        this.getProfilepict()
     },
     methods: {
         updateImage(file) {
@@ -68,7 +71,18 @@ export default {
                 .catch((error) => {
                     console.log("Image failed", error);
                 });
+        },
+        async getProfilepict() {
+            try {
+                const response = await this.$axios.$get(`/profiles`);
+                console.log(response);
+                this.string = response.data.img_url;
+                console.log(this.src)
+            } catch (e) {
+                console.log(e);
+            }
         }
+
         // openFile(){
         //     const input = document.createElement('input');
         //     input.type='file';
