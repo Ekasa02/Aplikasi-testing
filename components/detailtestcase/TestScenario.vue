@@ -2,14 +2,14 @@
     <div class="bg-[#33333385] fixed top-0 left-0 right-0 bottom-0 flex items-center sm:justify-center">
         <div class="bg-white p-8 rounded-lg shadow-lg">
             <div class="flex">
-                <h1 class="font-Montserrat font-bold text-2xl pr-[300px]">Scenario</h1>
+                <h1 class="font-Montserrat font-bold text-2xl pr-[300px]">Feature</h1>
                 <img src="../createversion/svg/CloseCircle.svg" class="cursor-pointer" alt="Close Icon" @click="closeModal">
             </div>
             <hr class="border-gray-300 my-4 w-full">
             <form @submit.prevent="postScenario">
                 <div class="relative pt-[15px]">
                     <label class="block font-Montserrat font-bold text-[14px] mb-2" for="scenario">
-                        Add Scenario
+                        Add Feature
                     </label>
                     <div class="flex items-center">
                         <input id="scenario" v-model="item.name"
@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </form>
-            <p class="block font-Montserrat font-bold text-[14px] mb-2 mt-[25px]">Scenario list</p>
+            <p class="block font-Montserrat font-bold text-[14px] mb-2 mt-[25px]">List Feature</p>
             <div class="max-h-[40vh] overflow-y-auto">
                 <ul class="list-group h-full mt-[5px]">
                     <li v-for="item in items" :key="item.id" class="list-group-item mb-2">
@@ -31,9 +31,9 @@
                                 <h1 class="font-semibold text-xl">{{ item.name }}</h1>
                             </div>
                             <div class="flex gap-x-3 items-center">
-                                <button @click="deleteItem(item.id)">
+                                <!-- <button @click="deleteItem(item.id)">
                                     <img src="./svg/Delete.svg" alt="List Icon" class="h-[20px] w-[20px]">
-                                </button>
+                                </button> -->
                                 <button @click="editPopup(item)">
                                     <img src="./svg/Edit.svg" alt="List Icon" class="h-[20px] w-[20px]">
                                 </button>

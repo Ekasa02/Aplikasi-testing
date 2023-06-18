@@ -10,7 +10,7 @@
                 <form @submit.prevent="createTestCase">
                     <div class="relative">
                         <label class="block  font-bold text-[14px] mb-2" for="testcase">
-                            Test case
+                            Description
                         </label>
                         <input id="testcase" v-model="newItem.testcase"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -18,7 +18,7 @@
                     </div>
                     <div class="relative pt-[15px]">
                         <label class="block font-Montserrat font-bold text-[14px] mb-2" for="scenario">
-                            Scenario
+                            Fitur
                         </label>
                         <div class="flex items-center">
                             <select id="scenario"

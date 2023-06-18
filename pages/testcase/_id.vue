@@ -7,7 +7,7 @@
         <div>
           <div class="flex gap-x-3 items-center">
             <h1 class="text-3xl font-bold">{{ testName }}</h1>
-            <img src="../.././components/assets/Ellipsis.svg" alt="Test Icon" class="h-[25px] w-[25px]">
+            <!-- <img src="../.././components/assets/Ellipsis.svg" alt="Test Icon" class="h-[25px] w-[25px]"> -->
             <button @click="showFilter">
               <img src="../../components/assets/Filter.svg" alt="Test Icon" class="h-[25px] w-[25px]">
             </button>

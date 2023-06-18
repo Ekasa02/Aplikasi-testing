@@ -32,7 +32,7 @@
               class="block font-Montserrat font-bold text-[14px] mb-2"
               for="scenario"
             >
-              Scenario
+              Feature
             </label>
             <div class="flex items-center">
               <select
