@@ -1,9 +1,9 @@
 <template>
   <div 
-    class="top-15 right-0 fixed md:top-16  md:right-0 transform -translate-x-28" @click="openProfile"
+   style="z-index:50;" class=" top-15 fixed md:top-16  md:right-0 transform -translate-x-28" @click="openProfile"
   >
     <div >
-      <div class="bg-white rounded-lg shadow-lg">
+      <div class="bg-white rounded-lg shadow-lg pl-7 md:pl-0">
         <header-account></header-account>
         <div class="pl-5">
           <account-profil></account-profil>

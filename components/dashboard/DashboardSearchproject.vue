@@ -1,6 +1,6 @@
 <template>
     <div class="relative">
-        <div class="absolute inset-y-0 left-0 pl-3 flex items-center">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center ">
             <img src="./svg/Find.svg" alt="Search icon" class="h-4 w-4">
         </div>
         <input

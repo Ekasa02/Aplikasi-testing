@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="font-bold py-8 leading-10 text-[32px]">Report</h1>
-    <div class="grid grid-cols-2 gap-8 overflow-x-auto">
+    <div class="grid  md:grid-cols-2 md:gap-8 overflow-x-auto">
       <div v-for="item in items" :key="item">
         <div class="bg-[#FFFFFF] rounded px-5">
           <div class="flex items-center gap-2 py-4">
@@ -10,7 +10,7 @@
             </div>
             <div>
               <div class="flex gap-x-3 items-center">
-                <p>{{ title }}</p>
+                <p >{{ title }}</p>
                 <div v-if="platform === 'mobile'">
                   <img src="../assets/ReportMobile.svg" />
                 </div>

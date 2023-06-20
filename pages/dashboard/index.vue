@@ -18,7 +18,7 @@
         </button>
       </div>
     </div>
-    <div style="padding: 20px 100px;" class="project md:px-[20px] md:py-[100px]">
+    <div class="project px-[10px] py-4  md:px-[90px] md:py-[30px]">
       <DashboardTable :items="items" :search-value="searchValue" @createVersion="navigateTo" />
     </div>
     <DashboardNewproject v-if="isPopupVisible" @closePopup="closePopup" />

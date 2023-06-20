@@ -3,7 +3,7 @@
         <SettingProfile @showProfile="showProfile" />
         <div class=" bg-gray-100 ">
             <DashboardPopup v-if="isProfileVisible" />
-            <div class="px-14 items-center justify-center">
+            <div class="px-4 md:px-14 items-center justify-center">
                 <ReportTest :items="items" />
             </div>
         </div>

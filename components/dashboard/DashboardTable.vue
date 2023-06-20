@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="max-h-[43vh] overflow-y-auto overflow-x-auto">
+    <div class=" max-h-[43vh] overflow-y-auto overflow-x-auto">
       <ul class="list-group h-full py-4">
         <li v-for="item in filteredItems" :key="item.id" class="list-group-item mb-2">
           <div class="flex w-full justify-between border-b border-solid py-2 hover:cursor-pointer"
