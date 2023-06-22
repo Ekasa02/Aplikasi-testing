@@ -6,7 +6,7 @@
       </div>
       <div class="">
         <p class="">
-          The completion of test cases will raise your
+          The completion of scenarios will raise your
           level and earn you achievements.
         </p>
       </div>

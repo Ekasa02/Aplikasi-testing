@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="bg-white px-5 py-5 rounded">
-      <p class="pb-3 font-medium text-lg">{{ userAchieve.testcase_count }} Testcase</p>
+      <p class="pb-3 font-medium text-lg">{{ userAchieve.testcase_count }} Scenario</p>
       <div class="w-full bg-[#CDCBFC] rounded-lg">
         <div class="h-4 bg-[#554AF0] rounded-lg"
           :style="{ width: `${(userAchieve.testcase_count / (userAchieve.testcase_count + userAchieve.rank.range_difference)) * 100}%` }">
@@ -20,7 +20,7 @@
       </div>
       <p class="pt-3 font-medium">
         <template v-if="userAchieve.rank.name === 'Beginner'">
-          {{ userAchieve.rank.range_difference }} more test cases to reach <span class="text-[#4DAEFF]">intermediate</span> level
+          {{ userAchieve.rank.range_difference }} more scenarios to reach <span class="text-[#4DAEFF]">intermediate</span> level
         </template>
         <template v-else-if="userAchieve.rank.name === 'Intermediate'">
           {{ userAchieve.rank.range_difference }} more test cases to reach <span class="text-[#FCC42E]">advanced</span> level
