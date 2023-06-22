@@ -3,7 +3,7 @@
         <div class="py-4 px-4 font-montserrat">
             <div>
                 <div class="flex ">
-                    <h1 class="text-xl font-semibold">Test Case</h1>
+                    <h1 class="text-xl font-semibold">Scenario</h1>
                     <div class="ml-auto">
                         <button class="flex bg-[#EBEBFE] rounded items-center px-1 py-1 float-right">
                             <img src="../assets/Edit.svg"/>

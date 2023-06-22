@@ -5,7 +5,7 @@
         <div class="px-[100px] py-[50px] font-montserrat">
             <div>
                 <div class="flex gap-x-2">
-                    <h1 class="text-xl font-semibold">Test Case</h1>
+                    <h1 class="text-xl font-semibold">Scenario</h1>
                     <div class="ml-auto">
                         <button class="flex bg-[#EBEBFE] rounded items-center px-3 py-2 float-right" @click="showEdit">
                             <img src="../../components/assets/Edit.svg" />

@@ -39,7 +39,7 @@
             </span>
           </div>
           <div class="flex gap-x-4 mt-2 text-lg text-gray-500">
-            <p class="truncate py-1">Test case: {{ item.test_case_count }}</p>
+            <p class="truncate py-1">Scenario: {{ item.test_case_count }}</p>
             <p class="truncate py-1">Pass: <span class="text-[#2BE51A]">{{ item.test_case_pass_count }}</span></p>
             <p class="truncate py-1">Fail: <span class="text-[#FF0000]">{{ item.test_case_fail_count }}</span></p>
           </div>

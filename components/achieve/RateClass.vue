@@ -6,7 +6,7 @@
           <div class="text-center">
             <h1 class="font-semibold text-xl">Beginner</h1>
             <p class="text-sm">Start from</p>
-            <h1>0 Test Case</h1>
+            <h1>0 Scenario</h1>
           </div>
         </div>
       </div>
@@ -17,7 +17,7 @@
           <div class="text-center">
             <h1 class="font-semibold text-xl">Intermediate</h1>
             <p class="text-sm">Start from</p>
-            <h1>200 Test Case</h1>
+            <h1>200 Scenario</h1>
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@
           <div class="text-center">
             <h1 class="font-semibold text-xl">Advanced</h1>
             <p class="text-sm">Start from</p>
-            <h1>1000 Test Case</h1>
+            <h1>1000 Scenario</h1>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@
           <div class="text-center">
             <h1 class="font-semibold text-xl">Mastery</h1>
             <p class="text-sm">Start from</p>
-            <h1>2000 Test Case</h1>
+            <h1>2000 Scenario</h1>
           </div>
         </div>
       </div>

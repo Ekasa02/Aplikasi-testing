@@ -4,7 +4,7 @@
       class="bg-white p-8 rounded-lg shadow-lg w-[35%] max-h-[80vh] overflow-hidden"
     >
       <div class="flex justify-between">
-        <h1 class="font-bold text-2xl pr-12">Edit test case</h1>
+        <h1 class="font-bold text-2xl pr-12">Edit scenario</h1>
         <img
           alt="Close Icon"
           src="../createversion/svg/CloseCircle.svg"
@@ -17,14 +17,14 @@
         <form @submit.prevent="editProject">
           <div class="relative">
             <label class="block font-bold text-[14px] mb-2" for="testcase">
-              Test case
+              Scenario
             </label>
             <input
               id="testcase"
               v-model="editedItem.testcase"
               class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="text"
-              placeholder="Test case"
+              placeholder="Scenario"
             />
           </div>
           <div class="relative pt-[15px]">

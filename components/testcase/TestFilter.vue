@@ -3,7 +3,7 @@
         <div class="bg-white rounded-lg shadow-lg">
             <div class="pt-4">
                 <div class="flex items-center">
-                    <h1 class="font-bold text-2xl sm:pr-[340px] pl-5">Filter test case</h1>
+                    <h1 class="font-bold text-2xl sm:pr-[340px] pl-5">Filter scenario</h1>
                     <button @click="hideFilter">
                         <img src="./svg/CloseCircle.svg" class="pr-4">
                     </button>

@@ -2,7 +2,7 @@
     <div class="font-montserrat fixed inset-0 flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg shadow-lg w-[35%] max-h-[80vh] overflow-hidden">
             <div class="flex justify-between">
-                <h1 class="font-Montserrat font-bold text-2xl pr-12">Create test case</h1>
+                <h1 class="font-Montserrat font-bold text-2xl pr-12">Create scenario</h1>
                 <img src="../createversion/svg/CloseCircle.svg" class="cursor-pointer" alt="Close Icon" @click="closeModal">
             </div>
             <hr class="border-gray-300 my-4 w-full">
@@ -14,7 +14,7 @@
                         </label>
                         <input id="testcase" v-model="newItem.testcase"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text" placeholder="Test case" required>
+                            type="text" placeholder="Scenario" required>
                     </div>
                     <div class="relative pt-[15px]">
                         <label class="block font-Montserrat font-bold text-[14px] mb-2" for="scenario">
