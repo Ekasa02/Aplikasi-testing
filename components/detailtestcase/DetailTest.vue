@@ -21,7 +21,7 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div class="w-2/3">
                         <div class="py-2">
-                            <h1 class="font-semibold text-xl">Scenario</h1>
+                            <h1 class="font-semibold text-xl">Features</h1>
                             <p>Login</p>
                         </div>
                         <div class="py-2">

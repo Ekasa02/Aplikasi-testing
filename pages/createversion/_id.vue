@@ -7,11 +7,19 @@
         <VersionName :project-name=projects.name :platform=projects.platform type-test="Manual" />
         <div class="flex gap-x-4">
           <button
+            v-if="member !== 'po'"
+            class="bg-[#FFFFFF] text-[#554AF0] font-normal md:font-bold py-1 px-2 md:py[2px] md:px[4px] rounded border border-[#554AF0] hover:text-white hover:bg-red-500"
+            @click="infoInvite">
+            Members
+          </button>
+          <button
+            v-if="member === 'po'"
             class="bg-[#FFFFFF] text-[#554AF0] font-normal md:font-bold py-1 px-2 md:py[2px] md:px[4px] rounded border border-[#554AF0] hover:text-white hover:bg-red-500"
             @click="infoInvite">
             Invite
           </button>
-          <PopupInvite v-if="isPopupInvite" :id="id" @closeInvite="closeInvite" />
+          <PopupInvite v-if="isPopupInvite && member === 'po'" :id="id" @closeInvite="closeInvite" />
+          <PopupMember v-if="isPopupInvite && member !== 'po'" :id="id" @closeMember="closeInvite" />
           <button v-if="member !== 'dev'" class="bg-[#554AF0] text-white font-bold py-2 px-4 rounded" @click="showCreate">
             Create version
           </button>
@@ -24,6 +32,7 @@
 </template>
 
 <script>
+import PopupMember from '../../components/projectedit/invitemember/member/PopupMember.vue'
 import PopupInvite from '../../components/projectedit/invitemember/PopupInvite.vue';
 import VersionHeader from '../../components/createversion/VersionHeader.vue';
 import VersionName from '../../components/createversion/VersionName.vue';
@@ -33,6 +42,7 @@ import DashboardPopup from '../../components/dashboard/DashboardPopup.vue';
 
 export default {
   components: {
+    PopupMember,
     PopupInvite,
     VersionHeader,
     VersionName,

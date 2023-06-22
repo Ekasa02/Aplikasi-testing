@@ -2,19 +2,19 @@
     <div class="bg-[#33333385] fixed top-0 left-0 right-0 bottom-0 flex items-center sm:justify-center">
         <div class="bg-white p-8 rounded-lg shadow-lg">
             <div class="flex">
-                <h1 class="font-Montserrat font-bold text-2xl pr-[300px]">Scenario</h1>
+                <h1 class="font-Montserrat font-bold text-2xl pr-[300px]">Features</h1>
                 <img src="../createversion/svg/CloseCircle.svg" class="cursor-pointer" alt="Close Icon" @click="closeModal">
             </div>
             <hr class="border-gray-300 my-4 w-full">
             <form @submit.prevent="postScenario">
                 <div class="relative pt-[15px]">
                     <label class="block font-Montserrat font-bold text-[14px] mb-2" for="scenario">
-                        Add Scenario
+                        Add Feature
                     </label>
                     <div class="flex items-center">
                         <input id="scenario" v-model="item.name" :disabled="isEditing(item.id)"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text" placeholder="Scenario" />
+                            type="text" placeholder="Features" />
                         <button
                             class="hover:opacity-80 text-white font-bold py-2 px-2.5 bg-blue-500 rounded ml-3 border border-gray-300">
                             Create
@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </form>
-            <p class="block font-Montserrat font-bold text-[14px] mb-2 mt-[25px]">Scenario list</p>
+            <p class="block font-Montserrat font-bold text-[14px] mb-2 mt-[25px]">Feature list</p>
             <div class="max-h-[40vh] overflow-y-auto">
                 <ul class="list-group h-full mt-[5px]">
                     <li v-for="item in items" :key="item.id" class="list-group-item mb-2">

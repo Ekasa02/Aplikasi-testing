@@ -23,7 +23,7 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div class="w-2/3">
                         <div class="mt-4">
-                            <h1 class="font-semibold text-xl">Scenario</h1>
+                            <h1 class="font-semibold text-xl">Features</h1>
                             <p class="mt-2">{{ scenario }}</p>
                         </div>
                         <div class="mt-4">

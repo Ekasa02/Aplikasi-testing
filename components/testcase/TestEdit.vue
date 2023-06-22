@@ -18,13 +18,13 @@
           </div>
           <div class="relative pt-[15px]">
             <label class="block font-Montserrat font-bold text-[14px] mb-2" for="scenario">
-              Scenario
+              Features
             </label>
             <div class="flex items-center">
               <select id="scenario"
                 class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 v-model="editedItem.scenario_id">
-                <option value="" disabled>Select Scenario</option>
+                <option value="" disabled>Select Features</option>
                 <option v-for="scenarioItem in scenario" :value="scenarioItem.id" :key="scenarioItem.id">
                   {{ scenarioItem.name }}
                 </option>
@@ -52,18 +52,23 @@
             <label class="block font-bold text-[14px] mb-2" for="pre-condition">
               Pre condition
             </label>
-            <input id="pre-condition" v-model="editedItem.pre_condition"
+            <textarea id="pre-condition" v-model="editedItem.pre_condition"
               class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              type="text" placeholder="Pre condition" />
+              rows="4"
+              type="text" placeholder="Pre condition">
+          </textarea>
           </div>
           <div class="pt-[15px] relative">
             <label class="block font-bold text-[14px] mb-2" for="test-steps">
               Test steps
             </label>
-            <input id="test-steps" v-model="editedItem.test_step"
+            <textarea id="test-steps" v-model="editedItem.test_step"
               class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              type="text" placeholder="Test steps" />
+              rows="4"
+              placeholder="Test steps">
+            </textarea>
           </div>
+
           <div class="pt-[15px] relative">
             <label class="block font-bold text-[14px] mb-2" for="expectation">
               Expectation

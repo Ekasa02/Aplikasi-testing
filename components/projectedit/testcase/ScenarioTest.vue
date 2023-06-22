@@ -4,7 +4,7 @@
         class="block font-['Montserrat'] font-bold text-[14px] mb-2"
         for="scenario"
       >
-        Scenario
+        Features
       </label>
       <div class="flex items-center">
         <input

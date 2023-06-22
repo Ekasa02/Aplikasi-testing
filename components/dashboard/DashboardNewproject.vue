@@ -86,6 +86,9 @@ export default {
       this.$emit('closePopup')
     },
     async postProject() {
+      if(this.newItem.type_test === 'automatic'){
+        this.newItem.platform = 'mobile'
+      }
       try {
         const response = await this.$axios.$post('/projects', this.newItem)
         console.log(response)

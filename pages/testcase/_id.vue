@@ -113,7 +113,7 @@ export default {
     },
     handleFilterItems(activeItemsData) {
       // Handle the emitted data here
-      console.log(activeItemsData);
+      // console.log(activeItemsData);
       this.filter = activeItemsData
     }
   },
