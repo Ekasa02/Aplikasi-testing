@@ -2,43 +2,63 @@
     <div class="flex flex-col md:flex-row rounded">
       <div class="w-full md:2/3 bg-[#EDF1FF] flex-1">
         <div>
-            <div class="font-['Montserrat'] px-4 py-3">
+            <div class="font-m px-4 py-3">
                 <div class="flex">
                     <img src="../assets/ListDoubleRight.svg"/>
-                    <h1 class="font-normal text-[20px] px-4">What is the Logibug application?</h1>
+                    <h1 class="font-normal text-[20px] px-4">UI/UX Designer</h1>
                 </div>
                 <div class=" flex">
-                    <p class="font-medium text-[14px] px-9 ">The Logibug application is an application that can be used to carry out testing with two manual and automatic methods</p>
+                    <ol class="font-medium text-[14px] px-10 list-decimal">
+                        <li>Muhammad Izul Bachtiar</li>
+                        <li>Sinky Vila Anjani</li>
+                    </ol>
                 </div>
                 <div class="flex">
                     <img src="../assets/ListDoubleRight.svg"/>
-                    <h1 class="font-normal text-[20px] px-4">How does the Logibug app work?</h1>
+                    <h1 class="font-normal text-[20px] px-4">Mobile Developer</h1>
                 </div>
                 <div class=" flex">
-                    <p class="font-medium text-[14px] px-9">Using Mobile App to create testing for certain feature, scenario, step with proof of work using attachment image or videos for better visibility on tracing issues. Software Engineer are able to see error notification after testing and doing fixing issues and give notification back to QA. </p>
+                    <ol class="font-medium text-[14px] px-10 list-decimal">
+                        <li>Fahrul Razi Wijaya Saputra</li>
+                        <li>Iman Ramadhan</li>
+                        <li>Lucky Ana Adi Pratama</li>
+                    </ol>
                 </div>
                 <div class="flex">
                     <img src="../assets/ListDoubleRight.svg"/>
-                    <h1 class="font-normal text-[20px] px-4">What is the Logibug application?</h1>
+                    <h1 class="font-normal text-[20px] px-4">Front End Developer</h1>
                 </div>
                 <div class=" flex">
-                    <p class="font-medium text-[14px] px-9">The Logibug application is an application that can be used to carry out testing with two manual and automatic methods</p>
+                    <ol class="font-medium text-[14px] px-10 list-decimal">
+                        <li>Varick Tovandy</li>
+                        <li>Eka Safitri</li>
+                    </ol>
                 </div>
                 <div class="flex">
                     <img src="../assets/ListDoubleRight.svg"/>
-                    <h1 class="font-normal text-[20px] px-4">Why was the Logibug application created?</h1>
+                    <h1 class="font-normal text-[20px] px-4">Back End Developer</h1>
                 </div>
                 <div class=" flex">
-                    <p class="font-medium text-[14px] px-9">QA Engineers have difficulties to track their testing scenarios when do testing for Web, Android, and iOS applications. System need to give notification to Software Engineers for better visibilities on reproducing, tracing, fixing, until request to QA Engineer to re-run the feature, scenario, and steps to confirm it’s been solved. This product need to handle API testing in automated</p>
+                    <ol class="font-medium text-[14px] px-10 list-decimal">
+                        <li>Ashari Midana</li>
+                        <li>Aulia Salsabila Putri</li>
+                        <li>Aziz Nur Fajar</li>
+                        <li>Fahrul Ahmad Fauzi</li>
+                        <li>Muhammad Akmal Amran</li>
+                    </ol>                    
                 </div>
                 <div class="flex">
                     <img src="../assets/ListDoubleRight.svg"/>
-                    <h1 class="font-normal text-[20px] px-4">Company profile</h1>
+                    <h1 class="font-normal text-[20px] px-4">Quality Assurance</h1>
                 </div>
-                <div class="flex">
-                    <img src="../assets/ListDoubleRight.svg"/>
-                    <h1 class="font-normal text-[20px] px-4">Development team</h1>
+                <div class=" flex">
+                    <ol class="font-medium text-[14px] px-10 list-decimal">
+                        <li>Adisufatul Anam</li>
+                        <li>Camila Ria Kinanthi</li>
+                        <li>Rio Adistya Saputra</li>
+                    </ol>
                 </div>
+        
             </div>
         </div>
       </div>
