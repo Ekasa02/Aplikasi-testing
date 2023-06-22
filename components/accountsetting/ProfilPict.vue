@@ -11,20 +11,8 @@
     </div>
     <div class="flex items-center gap-x-12 mt-3">
       <div class="">
-        <img
-          v-if="items && items.img_url"
-          :src="items.img_url"
-          class="w-[110px] h-[110px] rounded-full"
-          alt="Profile picture"
-        />
-        <img
-          v-else
-          src="../assets/Profil.svg"
-          class="w-[110px] h-[110px] rounded-full border-2 border-solid"
-          alt="Profile Picture"
-        />
-        <!-- <img src="getPhoto" class="w-[110px] h-[110px] rounded-full" alt="Profile Picture">
-        <img v-if="!getPhoto" src="../assets/Profil.svg" class="w-[110px] h-[110px] rounded-full" alt="Profile Picture"> -->
+        <img v-if="!getPhoto" :src="items?.img_url" class="w-[110px] h-[110px] rounded-full" alt="Profile Picture">
+        <img v-if="getPhoto" :src="getPhoto" class="w-[110px] h-[110px] rounded-full" alt="Profile Picture">
       </div>
       <div class="">
         <p>Maximum photo size is 1 MB</p>
@@ -143,7 +131,8 @@ export default {
 
           console.log(data)
         }
-      } catch (e) {
+      }
+      catch (e) {
         console.log(e.response)
       }
     },

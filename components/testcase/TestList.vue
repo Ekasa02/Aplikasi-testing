@@ -1,9 +1,9 @@
 <template>
   <div class="max-h-[70vh] overflow-y-auto">
     <ul class="list-group h-full mt-[40px]">
-      <li class="list-group-item" v-for="item in DataFiltered " :key="item.id" @click="toDetailTest(item.id)">
+      <li class="list-group-item" v-for="(item) in DataFiltered" :key="item.id" @click="toDetailTest(item.id)">
         <div class="border-b border-gray-200 pb-[10px] flex gap-x-5 mb-[10px] cursor-pointer">
-          <div class="w-3 h-[70px] rounded-xl" :class="getCategoryColor(item.test_category)"></div>
+          <div class="w-3 h-[70px] rounded-xl" :class="getCategoryColor(item.status)"></div>
           <div>
             <h1 class="font-semibold text-xl">{{ item.testcase }}</h1>
             <div class="flex mt-2 gap-x-2">
@@ -111,7 +111,7 @@ export default {
   },
   methods: {
     getCategoryColor(category) {
-      if (category === "positif") {
+      if (category === "pass") {
         return "bg-green-500";
       } else if (category === "negatif") {
         return "bg-red-500";
@@ -130,7 +130,7 @@ export default {
           severity: scenarioData.severity
         });
       } catch (e) {
-        console.log(e);
+        // console.log(e);
       }
     },
     editPopup(item) {

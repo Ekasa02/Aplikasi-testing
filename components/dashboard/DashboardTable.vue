@@ -6,24 +6,20 @@
           <div class="flex w-full justify-between border-b border-solid py-2 hover:cursor-pointer"
             @click="navigateToVersion(item)">
             <div class="flex items-center">
-              <div class="py-2">
-                <img src="./svg/List.svg" alt="List Icon" class="h-full">
+              <div v-if="item.platform === 'web' && item.type_test === 'manual'" class="py-2">   
+                <img src="../assets/website.svg" />
+              </div>
+              <div v-if="item.platform === 'mobile' && item.type_test === 'manual'" class="py-2">   
+                <img src="../assets/mobile.svg" />
+              </div>
+              <div v-if="item.type_test === 'automatic'" class="py-2">   
+                <img src="../assets/API.svg" />
               </div>
               <div class="flex flex-col ml-3 gap-y-1 items">
                 <h5 v-if="item.name" class="text-sm font-semibold text-gray-700">
                   <span class="text-gray-700 font-semibold text-sm">{{ item.name }}</span>
                 </h5>
                 <div class="flex gap-x-4 gap-y-2items-center">
-                  <div v-if="item.platform === 'mobile' && item.type_test === 'manual'" class="text-gray-300">
-                    <div>
-                      <img src="./svg/Mobile.svg" alt="List Icon" class="h-full">
-                    </div>
-                  </div>
-                  <div v-if="item.platform === 'web' && item.type_test === 'manual'" class="text-gray-300">
-                    <div>
-                      <img src="./svg/Web.svg" alt="List Icon" class="h-full">
-                    </div>
-                  </div>
                   <div v-if="item.type_test === 'manual'" class="rounded-lg border-gray-300 border-2 border-solid px-4">
                     <p class="text-gray-700">Manual</p>
                   </div>

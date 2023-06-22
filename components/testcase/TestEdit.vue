@@ -2,7 +2,7 @@
   <div class="fixed inset-0 flex items-center justify-center font-Montserrat">
     <div class="bg-white p-8 rounded-lg shadow-lg w-[35%] max-h-[80vh] overflow-hidden">
       <div class="flex justify-between">
-        <h1 class="font-bold text-2xl pr-12">Edit test case</h1>
+        <h1 class="font-bold text-2xl pr-12">Edit scenario</h1>
         <img alt="Close Icon" src="../createversion/svg/CloseCircle.svg" class="cursor-pointer" @click="closeModal" />
       </div>
       <hr class="border-gray-300 my-4 w-full" />
@@ -10,21 +10,21 @@
         <form @submit.prevent="editProject">
           <div class="relative">
             <label class="block font-bold text-[14px] mb-2" for="testcase">
-              Test case
+              Scenario
             </label>
             <input id="testcase" v-model="editedItem.testcase"
               class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              type="text" placeholder="Test case" />
+              type="text" placeholder="Scenario" />
           </div>
           <div class="relative pt-[15px]">
             <label class="block font-Montserrat font-bold text-[14px] mb-2" for="scenario">
-              Scenario
+              Features
             </label>
             <div class="flex items-center">
               <select id="scenario"
                 class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 v-model="editedItem.scenario_id">
-                <option value="" disabled>Select Scenario</option>
+                <option value="" disabled>Select Features</option>
                 <option v-for="scenarioItem in scenario" :value="scenarioItem.id" :key="scenarioItem.id">
                   {{ scenarioItem.name }}
                 </option>
@@ -52,18 +52,23 @@
             <label class="block font-bold text-[14px] mb-2" for="pre-condition">
               Pre condition
             </label>
-            <input id="pre-condition" v-model="editedItem.pre_condition"
+            <textarea id="pre-condition" v-model="editedItem.pre_condition"
               class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              type="text" placeholder="Pre condition" />
+              rows="4"
+              type="text" placeholder="Pre condition">
+          </textarea>
           </div>
           <div class="pt-[15px] relative">
             <label class="block font-bold text-[14px] mb-2" for="test-steps">
               Test steps
             </label>
-            <input id="test-steps" v-model="editedItem.test_step"
+            <textarea id="test-steps" v-model="editedItem.test_step"
               class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              type="text" placeholder="Test steps" />
+              rows="4"
+              placeholder="Test steps">
+            </textarea>
           </div>
+
           <div class="pt-[15px] relative">
             <label class="block font-bold text-[14px] mb-2" for="expectation">
               Expectation

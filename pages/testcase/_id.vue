@@ -14,7 +14,7 @@
           </div>
         </div>
         <button class="bg-[#554AF0] text-white font-normal md:font-bold py-2 px-2 md:px-4 rounded" @click="showCreate">
-          Create test case
+          Create scenario
         </button>
       </div>
       <TestList :items="items" :project-id="projectId" :role="member" :filter="filter" />
@@ -113,7 +113,7 @@ export default {
     },
     handleFilterItems(activeItemsData) {
       // Handle the emitted data here
-      console.log(activeItemsData);
+      // console.log(activeItemsData);
       this.filter = activeItemsData
     }
   },

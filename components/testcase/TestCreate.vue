@@ -2,7 +2,7 @@
     <div class="font-montserrat fixed inset-0 flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg shadow-lg w-[35%] max-h-[80vh] overflow-hidden">
             <div class="flex justify-between">
-                <h1 class="font-Montserrat font-bold text-2xl pr-12">Create test case</h1>
+                <h1 class="font-Montserrat font-bold text-2xl pr-12">Create scenario</h1>
                 <img src="../createversion/svg/CloseCircle.svg" class="cursor-pointer" alt="Close Icon" @click="closeModal">
             </div>
             <hr class="border-gray-300 my-4 w-full">
@@ -14,17 +14,17 @@
                         </label>
                         <input id="testcase" v-model="newItem.testcase"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text" placeholder="Test case" required> 
+                            type="text" placeholder="Scenario" required>
                     </div>
                     <div class="relative pt-[15px]">
                         <label class="block font-Montserrat font-bold text-[14px] mb-2" for="scenario">
-                            Fitur
+                            Features
                         </label>
                         <div class="flex items-center">
                             <select id="scenario"
                                 class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 v-model="newItem.scenario_id">
-                                <option value="" disabled>Select Scenario</option>
+                                <option value="" disabled>Select Features</option>
                                 <option v-for="scenarioItem in scenario" :value="scenarioItem.id" :key="scenarioItem.id">
                                     {{ scenarioItem.name }}
                                 </option>
@@ -52,10 +52,12 @@
                         <label class="block font-['Montserrat'] font-bold text-[14px] mb-2" for="pre-condition">
                             Pre condition
                         </label>
-                        <input id="pre-condition"
+                        <textarea id="pre-condition"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text" placeholder="Pre condition" required v-model="newItem.pre_condition">
+                            rows="4" placeholder="Pre condition" required v-model="newItem.pre_condition">
+                        </textarea>
                     </div>
+
                     <div class="pt-[15px] relative">
                         <label class="block font-['Montserrat'] font-bold text-[14px] mb-2" for="test-step">
                             Test steps
@@ -74,7 +76,7 @@
                             type="text" placeholder="Expectation" required v-model="newItem.expectation">
                     </div>
                     <div class="pt-[50px]">
-                        <button class="font-['Montserrat'] bg-[#554AF0] text-white font-bold py-2 px-4 rounded" 
+                        <button class="font-['Montserrat'] bg-[#554AF0] text-white font-bold py-2 px-4 rounded"
                             type="submit">
                             Create
                         </button>

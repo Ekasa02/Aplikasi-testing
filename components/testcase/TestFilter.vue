@@ -3,7 +3,7 @@
         <div class="bg-white rounded-lg shadow-lg">
             <div class="pt-4">
                 <div class="flex items-center">
-                    <h1 class="font-bold text-2xl sm:pr-[340px] pl-5">Filter test case</h1>
+                    <h1 class="font-bold text-2xl sm:pr-[340px] pl-5">Filter scenario</h1>
                     <button @click="hideFilter">
                         <img src="./svg/CloseCircle.svg" class="pr-4">
                     </button>
@@ -11,7 +11,7 @@
                 <hr class="border-gray-300 mt-4 w-full">
             </div>
             <div class="p-5">
-                <h1 class="block font-bold text-md mb-2">Scenario</h1>
+                <h1 class="block font-bold text-md mb-2">Features</h1>
                 <ul class="flex gap-x-3">
                     <li v-for="item in scenario" :key="item.id">
                         <div>
@@ -24,6 +24,11 @@
                     </li>
                 </ul>
                 <div class="mt-8">
+                    <button
+                        class="font-['Montserrat'] bg-[#FFFFFF] font-semibold py-2 px-5 rounded border border-solid border-[#554AF0]"
+                        @click="addAll">
+                        {{ isAllSelected ? 'Unselect All' : 'Select All' }}
+                    </button>
                     <button class="font-['Montserrat'] text-white bg-[#554AF0] font-semibold py-2 px-5 rounded"
                         @click="filterItems">
                         Filter
@@ -51,6 +56,11 @@ export default {
     mounted() {
         this.getScenario();
     },
+    computed: {
+        isAllSelected() {
+            return this.activeItems.length === this.scenario.length;
+        },
+    },
     methods: {
         hideFilter() {
             this.$emit("hideFilter");
@@ -74,6 +84,15 @@ export default {
             const activeItemsData = this.scenario.filter((item) => this.activeItems.includes(item.name));
             this.$emit("filterItems", activeItemsData);
             this.$emit("hideFilter");
+        },
+        addAll() {
+            if (this.activeItems.length === this.scenario.length) {
+                // If all buttons are currently active, unselect all
+                this.activeItems = [];
+            } else {
+                // Select all available buttons
+                this.activeItems = this.scenario.map(item => item.name);
+            }
         },
     },
 };

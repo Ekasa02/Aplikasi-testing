@@ -7,7 +7,7 @@
             <div class="pt-6 pl-11 pr-7">
                 <img src="../../../projectedit/assets/Delete.svg" alt="image">
                 <p class="text-center pt-7 font-['Montserrat'] text-[20px]">Are you sure to delete project</p>
-                <p class="text-center font-['Montserrat'] text-[20px] ">Test case</p>
+                <p class="text-center font-['Montserrat'] text-[20px] ">Scenario</p>
             </div>
             <div class="flex pt-[30px] justify-center items-center ">
                 <button-cancel class=" mr-[19px]"></button-cancel>
